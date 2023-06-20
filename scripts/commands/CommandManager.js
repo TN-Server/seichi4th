@@ -13,7 +13,7 @@ export class CommandManager {
   constructor(main) {
     this.main = main;
     this.#commands = new Map();
-
+    
     world.beforeEvents.chatSend.subscribe(this.handle);
   }
   

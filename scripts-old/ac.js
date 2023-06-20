@@ -1,6 +1,5 @@
 // GameTest Pack for TN Seichi Server 4th
 // Made by RetoRuto9900K/tutinoko2048
-
 import { world, ItemStack, MinecraftItemTypes, Location } from '@minecraft/server';
 import { sendMsg } from './index.js';
 import { between, getNearestPlayer, getTPS } from './util/util';

@@ -1,5 +1,11 @@
 import * as mc from '@minecraft/server';
 
+declare module '@minecraft/server' {
+  interface Player {
+    breakCount?: number;
+  }
+}
+
 export interface CommandData {
   name: string;
   description: string;

@@ -9,6 +9,7 @@ import './system/register_property.js';
 import './system/dog.js';
 
 import * as util from './util/util';
+import * as config from './config';
 
 import { SkillManager } from './skill/SkillManager';
 import { CommandManager } from './commands/CommandManager.js';
@@ -24,12 +25,13 @@ export class Main {
     this.deltaTimes = [];
   }
 
-  /** @returns {number} */
-  getTPS() {
-    return Math.min(
-      util.average(this.deltaTimes.map(n => 1000 / n)),
-      20
-    );
+  get config() {
+    return config;
+  }
+
+  /** @type {number} */
+  get tps() {
+    return Math.min(util.average(this.deltaTimes.map(n => 1000 / n)), 20);
   }
 }
 

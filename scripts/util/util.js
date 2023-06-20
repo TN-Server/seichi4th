@@ -1,6 +1,29 @@
 import { Player, system } from "@minecraft/server";
 import * as UI from '@minecraft/server-ui';
 
+import * as config from '../config';
+
+/**
+ * @param {Player} player 
+ * @returns {boolean}
+ */
+export function isOP(player) {
+  return player.hasTag(config.opTag);
+}
+
+/**
+ * @param {import('@minecraft/server').Vector3} location 
+ * @param {import('@minecraft/server').Dimension} dimension 
+ */
+export function killDroppedItem(location, dimension) {
+  const items = dimension.getEntities({
+    type: 'minecraft:item',
+    maxDistance: 1.5,
+    location
+  });
+  for (const e of items) e.kill();
+}
+
 /**
  * @param {string} str 
  * @param {boolean} [noquote] 
