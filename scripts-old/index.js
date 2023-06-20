@@ -66,15 +66,6 @@ world.events.itemUse.subscribe(data => {
       source.tell(`遠すぎ (${e.message})`);
     }
   }
-  /*
-  const loc = locationToBlockLocation(source.location);
-  const block = source.dimension.getBlock(new BlockLocation(loc.x, 200, loc.z));
-  if (item.typeId == 'seichi:mayfly' && block?.typeId == 'minecraft:glass') {
-    source.runCommandAsync('effect @s jump_boost 5 4 true');
-    source.runCommandAsync('effect @s slow_falling 5 0 true');
-    flying.add(source);
-  }
-  */
 });
  
 world.events.beforeChat.subscribe(data => {
