@@ -4,6 +4,9 @@ declare module '@minecraft/server' {
   interface Player {
     breakCount?: number;
   }
+  interface Entity {
+    isPlayer: () => this is mc.Player;
+  }
 }
 
 export interface CommandData {
@@ -17,3 +20,14 @@ export interface CommandData {
 }
 
 export type CommandCallback = (sender: mc.Player, args: string[], manager: import('./commands/CommandManager').CommandManager) => void;
+
+declare namespace Config {
+  export interface Module {
+    
+  }
+  
+  export interface Nuker {
+    enabled: boolean;
+    limit: number;
+  }
+}

@@ -1,7 +1,9 @@
-export class SkillManager {
+import { Base } from '../util/Base';
+
+export class SkillManager extends Base {
   /** @arg {import('../index').Main} main */
   constructor(main) {
-    this.main = main;
+    super(main);
     
     /** @type {boolean} */
     this.enabled = true;
@@ -13,6 +15,9 @@ export class SkillManager {
    */
   onBreak(ev) {
     if (!this.enabled) return;
+    
+    const { block, player, brokenBlockPermutation: permutation } = ev;
+    console.warn(permutation.type.id, player.name, block.location);
   }
   
   /** 範囲破壊の処理 */

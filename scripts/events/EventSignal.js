@@ -2,7 +2,7 @@
 
 export class EventSignal {
   /** @type {string} */
-  eventName;
+  static eventName;
 
   /** @type {Set<Function>} */
   #callbacks;

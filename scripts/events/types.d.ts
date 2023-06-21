@@ -4,7 +4,7 @@ interface Events {
   [PlayerTickEvent.eventName]: IPlayerTickEvent;
 }
 
-interface IPlayerTickEvent {
+export interface IPlayerTickEvent {
   player: import('@minecraft/server').Player;
 }
 

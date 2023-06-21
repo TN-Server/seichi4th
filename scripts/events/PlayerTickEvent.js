@@ -7,7 +7,7 @@ export const eventName = /** @type {const} */ ('PlayerTick');
 
 export class PlayerTickEventSignal extends EventSignal {
   /** @type {string} */
-  eventName = eventName;
+  static eventName = eventName;
 
   constructor() {
     super();
@@ -23,8 +23,7 @@ export class PlayerTickEventSignal extends EventSignal {
    * @method subscribe
    * @memberof PlayerTickEventSignal
    * @instance
-   * @arg {(Events[eventName]) => void} callback
-   * @returns {(Events[eventName]) => void}
+   * @arg {(Events[this.eventName]) => void} callback
+   * @returns {(Events[thuis.eventName]) => void}
    */
 }
-

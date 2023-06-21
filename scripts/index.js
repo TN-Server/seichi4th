@@ -5,6 +5,7 @@
 console.warn('index.js loaded');
 
 import { world, system } from '@minecraft/server';
+import './system/class_injection.js';
 import './system/register_property.js';
 import './system/dog.js';
 
@@ -12,7 +13,8 @@ import * as util from './util/util';
 import * as config from './config';
 
 import { SkillManager } from './skill/SkillManager';
-import { CommandManager } from './commands/CommandManager.js';
+import { CommandManager } from './commands/CommandManager';
+import { AntiCheat } from './anticheat/main';
 
 
 export class Main {
@@ -20,6 +22,7 @@ export class Main {
     console.warn('initialized');
     this.skills = new SkillManager(this);
     this.commands = new CommandManager(this);
+    this.ac = new AntiCheat(this);
     
     /** @type {number[]} */
     this.deltaTimes = [];

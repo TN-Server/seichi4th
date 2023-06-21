@@ -1,17 +1,19 @@
 import { world } from '@minecraft/server';
 import * as config from '../config';
 import * as util from '../util/util';
+import { Base } from '../util/Base';
 import { CommandError } from '../util/CommandError';
 
 /** @typedef {import('../types').CommandData} CommandData */
 
-export class CommandManager {
+export class CommandManager extends Base {
   /** @type {Map<string, CommandData>} */
   #commands;
   
   /** @arg {import('../index').Main} main */
   constructor(main) {
-    this.main = main;
+    super(main);
+    
     this.#commands = new Map();
     
     world.beforeEvents.chatSend.subscribe(this.handle);
@@ -33,7 +35,7 @@ export class CommandManager {
     const command = this.getCommand(commandName);
     if (!command) return sender.sendMessage('[CommandManager] §cError: コマンドが見つかりませんでした');
     if (command.permission && !command.permission(sender)) return sender.sendMessage('[CommandManager] §cError: 権限がありません');
-
+    
     await null; // delay
     try {
       command.callback(sender, args, this);
