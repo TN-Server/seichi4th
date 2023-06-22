@@ -1,7 +1,6 @@
 {
     "include": [ "scripts" ],
     "exclude": [ "node_modules" ],
-    "files": [ "scripts/types.d.ts" ],
     "compilerOptions": {
       "allowJs": true,
       "checkJs": true,

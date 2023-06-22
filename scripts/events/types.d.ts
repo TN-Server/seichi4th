@@ -1,8 +1,6 @@
-import * as PlayerTickEvent from './PlayerTickEvent'
 // @ts-check
-interface Events {
-  [PlayerTickEvent.eventName]: IPlayerTickEvent;
-}
+
+import * as PlayerTickEvent from './PlayerTickEvent';
 
 export interface IPlayerTickEvent {
   player: import('@minecraft/server').Player;
