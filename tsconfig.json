@@ -8,6 +8,8 @@
       "target": "es2021",
       "noEmit": true,
       "moduleResolution": "node",
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": false
     }
   }

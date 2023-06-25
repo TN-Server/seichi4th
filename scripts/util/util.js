@@ -1,7 +1,11 @@
-import { Player, system } from "@minecraft/server";
+import { system } from "@minecraft/server";
 import * as UI from '@minecraft/server-ui';
 
 import * as config from '../config';
+
+export * from './score_util';
+
+/** @typedef {import('@minecraft/server').Player} Player */
 
 /**
  * @param {Player} player 
@@ -12,16 +16,24 @@ export function isOP(player) {
 }
 
 /**
- * @param {import('@minecraft/server').Vector3} location 
- * @param {import('@minecraft/server').Dimension} dimension 
+ * @arg {import('@minecraft/server').Vector3} location 
+ * @arg {import('@minecraft/server').Dimension} dimension 
+ * @arg {string} [itemId] killするアイテム名
  */
-export function killDroppedItem(location, dimension) {
-  const items = dimension.getEntities({
+export function killDroppedItem(location, dimension, itemId) {
+  const option = {
     type: 'minecraft:item',
     maxDistance: 1.5,
     location
-  });
-  for (const e of items) e.kill();
+  };
+  for (const entity of dimension.getEntities(option)) {
+    if (itemId) {
+      const item = entity.getComponent('minecraft:item').itemStack;
+      if (item.typeId === itemId) entity.kill();
+    } else {
+      entity.kill();
+    }
+  }
 }
 
 /**
@@ -56,3 +68,10 @@ export function showFormToBusy(player, form) {
 export function average(numbers) {
   return (numbers.reduce((a,b) => a + b, 0) / numbers.length) || 0;
 }
+
+/**
+ * @arg {number} max
+ * @arg {number} min
+ * @returns {number}
+ */
+export const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);

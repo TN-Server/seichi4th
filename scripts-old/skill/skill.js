@@ -3,14 +3,11 @@
 
 import { system, world, BlockLocation, MinecraftBlockTypes, ItemStack, Items, Location } from "@minecraft/server"
 import { dimension, addScore } from '../index.js'
-import toJson from '../util/toJson'
 import droplist from '../droplist'
 const randRange = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 let exec;
 let skillS = true;
 let sDebug = false;
-let eDebug = true;
-//import { rank } from './../system/30m-ranking.js'
 import { inArea } from './../util/util';
 import { blockS1, blockS2, itemS1, itemS2, ignoreBlocks } from '../constants/block';
 import { skills } from './../constants/skill';
@@ -20,7 +17,6 @@ export const playerMana = new PlayerMana();
 
 let breakCount = 0;
 
-let defaultSize = {x:1,y:1,z:1}
 let air = MinecraftBlockTypes.air.createDefaultBlockPermutation(); // air permutation
   
 world.events.beforeChat.subscribe(data => {
@@ -58,25 +54,22 @@ world.events.beforeChat.subscribe(data => {
   }
 });
 
-let originMP;
 export function onBreak(ev) {
   const {player, block, brokenBlockPermutation: permutation} = ev;
   const id = permutation.type.id;
   breakCount++
-  //rank.add(player.name, 'count');
   
   if (blockS1.includes(id) || blockS2.includes(id) || isInNatural(block.location)) {
     // normal break
     const drop = droplist[id];
     if (drop) {
-      //originMP = drop.mp;
       system.run(() => {
         killItem(block.location, block.dimension, id);
       });
       addScore(player, 'mp', drop.mp);
       addScore(player, 'mine', drop.mine);
       addScore(player, 'levelup_count', drop.levelup_count);
-      //rank.add(player.name, 'mine', drop.mine);
+      
       const container = player.getComponent('minecraft:inventory').container;
       const showRandom = player.getDynamicProperty('showRandom') ?? true;
       if (drop.chance != undefined) randomize(player, container, drop, block.location, showRandom);
@@ -129,7 +122,6 @@ function breakSkill(pos, player, size, mode, skillType = 0) {
   let _size = fixSize(size);
   if (_size.x === 0 && _size.y === 0 && _size.z === 0) return;
   let rotationXZ = player.rotation.y;
-  let rotationY = player.rotation.x;
   let container = player.getComponent('minecraft:inventory').container;
   const showRandom = player.getDynamicProperty('showRandom') ?? true;
   
@@ -246,10 +238,6 @@ function isInNatural(location) {
   return inArea(new BlockLocation(144, -64, -96), new BlockLocation(207, 255, -33), location);
 }
 
-function isInNormal(location) {
-  return inArea(new BlockLocation(144, -64, -96), new BlockLocation(207, 255, -33), location);
-}
-
 function fixSize(obj) {
   return { x: (obj.x-1) / 2, y: obj.y-1, z: obj.z-1 }
 }
@@ -258,7 +246,7 @@ function isUpgraded(item) {
   return item.getLore().some(l => l.includes('範囲破壊'));
 }
 
-system.runSchedule(()=> {
+system.runSchedule(() => {
   dimension.runCommandAsync(`scoreboard players set " §l§f採掘量/秒" info ${breakCount}`);
   breakCount = 0;
 },20);
