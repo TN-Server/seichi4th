@@ -41,7 +41,6 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     mine: 1,
     levelup_count: -1,
     chance: 999,
-    a:0,
     randomize: [
       { range: [ 0, 9 ], item: "seichi:dirt_material" }, // 10/1000
       { range: [ 10, 10 ], item: "seichi:dirt_grain" } // 1/1000
@@ -209,7 +208,7 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     ...presets.n200,
     chance: 199,
     randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_enchanted_stone" }
+      { range: 0, item: "seichi:s_enchanted_stone" } // 1/200
     ]
   },
   "seichi:n_granite": {
@@ -217,7 +216,7 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     ...presets.n300,
     chance: 99,
     randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_enchanted_stone" }
+      { range: 0, item: "seichi:s_enchanted_stone" }
     ]
   },
   "seichi:n_diorite": {
@@ -225,7 +224,7 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     ...presets.n300,
     chance: 99,
     randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_enchanted_stone" }
+      { range: 0, item: "seichi:s_enchanted_stone" }
     ]
   },
   "seichi:n_andesite": {
@@ -233,7 +232,7 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     ...presets.n300,
     chance: 99,
     randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_enchanted_stone" }
+      { range: 0, item: "seichi:s_enchanted_stone" }
     ]
   },
   "seichi:n_calcite": {
@@ -241,7 +240,7 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     ...presets.n300,
     chance: 99,
     randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_enchanted_stone" }
+      { range: 0, item: "seichi:s_enchanted_stone" }
     ]
   },
   "seichi:n_dripstone_block": {
@@ -249,7 +248,7 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     ...presets.n300,
     chance: 99,
     randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_enchanted_stone" }
+      { range: 0, item: "seichi:s_enchanted_stone" }
     ]
   },
   "seichi:n_deepslate": {
@@ -257,7 +256,7 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     ...presets.n400,
     chance: 149,
     randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_enchanted_deepslate" }
+      { range: 0, item: "seichi:s_enchanted_deepslate" }
     ]
   },
   "seichi:n_tuff": {
@@ -265,7 +264,7 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     ...presets.n500,
     chance: 74,
     randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_enchanted_deepslate" }
+      { range: 0, item: "seichi:s_enchanted_deepslate" }
     ]
   },
   "seichi:n_obsidian": {
@@ -273,7 +272,7 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     ...presets.n1000,
     chance: 49,
     randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_enchanted_obsidian" }
+      { range: 0, item: "seichi:s_enchanted_obsidian" }
     ]
   },
   "seichi:n_coal": {
@@ -555,20 +554,16 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     mp: 2400,
     mine: 120,
     levelup_count: -120,
-    chance: 0,
-    randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_hp_diamond", showMessage: false },
-    ]
+    item: "seichi:s_hp_diamond",
+    showMessage: false
   },
   "seichi:n_ruby": {
     name: "ルビー鉱石",
     mp: 3200,
     mine: 160,
     levelup_count: -160,
-    chance: 0,
-    randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_ruby", showMessage: false },
-    ]
+    item: "seichi:s_ruby",
+    showMessage: false
   },
   "seichi:n_bauxite_deepslate": {
     name: "深層ボーキサイト",
@@ -641,20 +636,16 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     mp: 2400,
     mine: 120,
     levelup_count: -120,
-    chance: 0,
-    randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_hp_diamond", showMessage: false },
-    ]
+    item: "seichi:s_hp_diamond",
+    showMessage: false
   },
   "seichi:n_ruby_deepslate": {
     name: "深層ルビー鉱石",
     mp: 3200,
     mine: 160,
     levelup_count: -160,
-    chance: 0,
-    randomize: [
-      { range: [ 0, 0 ], item: "seichi:s_ruby", showMessage: false },
-    ]
+    item: "seichi:s_ruby",
+    showMessage: false
   },
   "seichi:n_cookie": {
     name: "クッキーの化石",
@@ -678,11 +669,9 @@ export default /** @type {Record<string, BlockLoot>} */ ({
   },
   "seichi:n_tnt": {
     name: "TNT",
-    ...presets.n200,
-    chance: 0,
-    randomize: [
-      { range: [ 0, 0 ], commands: ['summon tnt $block'] }
-    ]
+     ...presets.n200,
+    commands: ["summon tnt %{x} %{y} %{z}"],
+    message: "§c!!!"
   }
 })
 
@@ -696,15 +685,13 @@ export default /** @type {Record<string, BlockLoot>} */ ({
     chance: 999, // 抽選するならchanceを書く しないなら消す
     randomize: [
       { // これは10/1000
-        min: 0,
-        max: 9, 
+        range: [ 0, 9 ],
         item: "[item id]",
         amount: 1, // アイテムの個数 デフォルトで1
         commands: [ // コマンド動かすならcommands:[]を書く なければ消す
-          "say aiueo",
           "give @s apple"
         ],
-        showMessage: true // 当たった時にメッセージを出すか デフォルトはtrue
+        showMessage: true // アイテム出た時にメッセージを出すか デフォルトはtrue
       }
     ]
   }

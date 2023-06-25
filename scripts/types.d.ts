@@ -46,6 +46,7 @@ export interface BlockLoot {
   amount?: number;
   /** 動かすコマンドの配列 */
   commands?: string[];
-  /** 当たった時にメッセージを出すか デフォルトはtrue */
+  /** アイテムが当たった時にメッセージを出すか デフォルトはtrue */
   showMessage?: boolean;
+  message?: string;
 }

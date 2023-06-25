@@ -1,7 +1,8 @@
 import { world, system, BlockPermutation, BlockVolumeUtils, Player, ItemStack, MinecraftBlockTypes } from '@minecraft/server';
 import { Base } from '../util/Base';
-
 import * as util from '../util/util';
+import { PlaceHolder } from '../util/PlaceHolder';
+
 import { blockS1, blockS2, itemS1, itemS2, ignoreBlocks } from './blocks';
 import dropList from './drop_list';
 
@@ -12,6 +13,13 @@ const AIR = MinecraftBlockTypes.air;
 
 /** @type {import('@minecraft/server').BlockVolume} */
 const NaturalArea = { from: { x: 144, y: -64, z: -96 }, to: { x: 207, y: 255, z: -33 } }
+
+const placeHolder = new PlaceHolder();
+placeHolder.register('x', ({x}) => x)
+  .register('y', ({y}) => y)
+  .register('z', ({z}) => z)
+  .register('block', ({block}) => block)
+  .register('player', ({player}) => player);
 
 export class SkillManager extends Base {
   /** @arg {import('../index').Main} main */
@@ -90,21 +98,29 @@ export class SkillManager extends Base {
    * @arg {string} [blockId]
    */
   runLoot(loot, player, block, blockId = block.typeId) {
+    const parseContext = { ...block.location, blockId, blockName: loot.name ?? '', player: player.name }
+    
     if ('mp' in loot) util.addScore(player, 'mp', loot.mp);
     if ('mine' in loot) util.addScore(player, 'mine', loot.mine);
     if ('levelup_count' in loot) util.addScore(player, 'levelup_count', loot.levelup_count);
     
-    const showRandom = player.getDynamicProperty('showRandom') ?? true;
-    if ((loot.showMessage ?? true) && showRandom)
-      player.sendMessage(`${loot.name ?? '何か'}の中から何か出てきたようだ...`);
-    
     const { container } = player.getComponent('minecraft:inventory');
-    if ('item' in loot) container.addItem(new ItemStack(loot.item, loot.amount));
+    if ('item' in loot) {
+      container.addItem(new ItemStack(loot.item, loot.amount));
+      const showRandom = player.getDynamicProperty('showRandom') ?? true;
+      if ((loot.showMessage ?? true) && showRandom)
+        player.sendMessage(`${loot.name ?? '何か'}の中から何か出てきたようだ...`);
+    }
     
     if ('commands' in loot) loot.commands.forEach(cmd => {
-      const parsed = cmd.replace(/\$block/g, `${block.x} ${block.y} ${block.z}`);
+      const parsed = placeHolder.parse(cmd, parseContext);
       player.runCommandAsync(parsed);
-    });  
+    });
+    
+    if ('message' in loot) {
+      const parsed = placeHolder.parse(loot.message, parseContext);
+      player.sendMessage(parsed);
+    }
       
     const randomized = util.random(0, loot.chance ?? 0); // 抽選
     if ('randomize' in loot) loot.randomize.forEach(_loot => {
