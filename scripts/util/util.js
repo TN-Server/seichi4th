@@ -1,4 +1,4 @@
-import { system } from "@minecraft/server";
+import { system, Direction } from "@minecraft/server";
 import * as UI from '@minecraft/server-ui';
 
 import * as config from '../config';
@@ -75,3 +75,15 @@ export function average(numbers) {
  * @returns {number}
  */
 export const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+/**
+ * 向いてる角度から方角を求める
+ * @arg {number} rotation 横方向の角度
+ * @returns {import('@minecraft/server').Direction} 方角
+ */
+export function getDirection(rotation) {
+  if (rotation > 45 && rotation <= 135) return Direction.West; // -x
+  if (rotation > 135 || rotation <= -135) return Direction.North; // -z
+  if (rotation > -135 && rotation <= -45) return Direction.East; // +x
+  return Direction.South; // +z
+}

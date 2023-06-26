@@ -1,4 +1,4 @@
-import { world, system, BlockPermutation, BlockVolumeUtils, Player, ItemStack, MinecraftBlockTypes } from '@minecraft/server';
+import { world, system, BlockVolumeUtils, Player, ItemStack, MinecraftBlockTypes, Direction } from '@minecraft/server';
 import { Base } from '../util/Base';
 import * as util from '../util/util';
 import { PlaceHolder } from '../util/PlaceHolder';
@@ -76,6 +76,51 @@ export class SkillManager extends Base {
    */
   runSkill(player, block, blockId) {
     
+  }
+  
+  /**
+   * @arg {Vector3} origin 掘ったブロックの座標
+   * @arg {Player} player
+   * @arg {number} width
+   * @arg {number} depth
+   * @arg {number} height
+   * @returns {import('@minecraft/server').BlockLocationIterator}
+   */
+  getArea(origin, player, width, depth, height) {
+    const facing = util.getDirection(player.getRotation().y); // 4つの方角として取得
+    const start = { x: origin.x, y: origin.y, z: origin.z }
+    const end = { x: origin.x, y: origin.y, z: origin.z }
+    const playerY = Math.floor(player.location.y);
+    
+    // fix xz location by facing
+    if (facing === Direction.North) {
+      start.x -= width;
+      end.x += width;
+      end.z -= depth;
+    }
+    if (facing === Direction.South) {
+      start.x += width;
+      end.x -= width;
+      end.z += depth;
+    }
+    if (facing === Direction.East) {
+      start.z -= width;
+      end.z += width;
+      end.x += depth;
+    }
+    if (facing === Direction.West) {
+      start.z += width;
+      end.z -= width;
+      end.x -= depth;
+    }
+    // fix y location: higher
+    if (playerY <= origin.y && origin.y <= playerY + height) {
+      start.y = playerY;
+    }
+
+    end.y = start.y + height;
+    
+    return BlockVolumeUtils.getBlockLocationIterator({ from: start, to: end });
   }
   
   /**
