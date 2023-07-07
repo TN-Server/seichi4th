@@ -1,32 +1,49 @@
 import { world, system, BlockVolumeUtils, Player, ItemStack, MinecraftBlockTypes, Direction } from '@minecraft/server';
 import { Base } from '../util/Base';
 import * as util from '../util/util';
+import { PropertyId } from '../util/constants';
 import { PlaceHolder } from '../util/PlaceHolder';
+import { ManaManager } from './ManaManager';
 
 import { blockS1, blockS2, itemS1, itemS2, ignoreBlocks } from './blocks';
 import dropList from './drop_list';
+import { skills } from './skills';
 
 /** @typedef {import('@minecraft/server').Vector3} Vector3 */
 /** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('../types').SkillSize} SkillSize */
 
 const AIR = MinecraftBlockTypes.air;
 
 /** @type {import('@minecraft/server').BlockVolume} */
 const NaturalArea = { from: { x: 144, y: -64, z: -96 }, to: { x: 207, y: 255, z: -33 } }
 
+const NormalSkillSize = { width: 1, height: 1, depth: 0 }
+
 const placeHolder = new PlaceHolder();
 placeHolder.register('x', ({x}) => x)
   .register('y', ({y}) => y)
   .register('z', ({z}) => z)
-  .register('block', ({block}) => block)
+  .register('blockId', ({blockId}) => blockId)
+  .register('blockName', ({blockName}) => blockName)
   .register('player', ({player}) => player);
+  
+const MineType = /** @type {const} */ ({
+  Normal: 0,
+  Natural: 1
+});
 
 export class SkillManager extends Base {
   /** @arg {import('../index').Main} main */
   constructor(main) {
     super(main);
     
+    this.mana = new ManaManager();
+    
+    /** 全体の破壊処理 */
     this.enabled = true;
+    
+    /** 範囲破壊スキル */
     this.skillEnabled = true;
     
     /** @private */
@@ -46,14 +63,43 @@ export class SkillManager extends Base {
     
     console.warn(permutation.type.id, player.name);
     
+    // 単発のドロップ
     if (blockS1.includes(blockId) || blockS2.includes(blockId) || SkillManager.isInNatural(block.location)) {
       this.runBreak(player, block, blockId);
     }
-    if (this.skillEnabled) this.runSkill(player, block, blockId);
+    
+    // スキル発火
+    if (this.skillEnabled) {
+      const { container } = player.getComponent('minecraft:inventory');
+      const handItem = container.getItem(player.selectedSlot);
+      if (!handItem) return;
+      
+      if (itemS1.includes(handItem.typeId) && blockS1.includes(blockId)) { // 人工1(シャベル)
+        if (blockS1.indexOf(blockId) <= itemS1.indexOf(handItem.typeId)) { // 適正ツール判定
+          const skillDuration = util.getScore(player, 'break_skill'); // スキル残り時間
+          if (skillDuration > 0) this.runSkill(player, block, blockId, MineType.Normal);
+        }
+        
+      } else if (itemS2.includes(handItem.typeId) && blockS2.includes(blockId)) { // 人工2(ツルハシ)
+        if (blockS2.indexOf(blockId) <= itemS2.indexOf(handItem.typeId)) {
+          const skillDuration = util.getScore(player, 'break_skill');
+          //if (score) breakSkill({x,y,z}, player, {x:3,y:2,z:1}, 0);
+        }
+      }
+      
+      // 自然資源
+      if (SkillManager.isInNatural(block.location) && SkillManager.isUpgraded(handItem)) {
+        const skillType = player.getDynamicProperty(PropertyId.skillType); // スキルの種類
+        const isEnabled = player.getDynamicProperty(PropertyId.skillEnabled); // スキルオンかどうか
+        const hasMana = this.mana.has(player.id, skills[skillType].mana); // 必要量のマナあるか
+        if (!hasMana) return;
+        if (isEnabled && skillType > 0) return;//breakSkill({x,y,z}, player, skills[type].size, 1, type);
+      }
+    }
   }
   
   /**
-   * 普通の破壊の処理
+   * 単発ドロップの処理
    * @arg {Player} player
    * @arg {Block} block
    * @arg {string} blockId
@@ -73,20 +119,21 @@ export class SkillManager extends Base {
    * @arg {Player} player
    * @arg {Block} block
    * @arg {string} blockId
+   * @arg {MineType[keyof MineType]} type
    */
-  runSkill(player, block, blockId) {
-    
+  runSkill(player, block, blockId, type) {
+
+
   }
   
   /**
+   * スキル範囲内のブロック座標を計算する
    * @arg {Vector3} origin 掘ったブロックの座標
    * @arg {Player} player
-   * @arg {number} width
-   * @arg {number} depth
-   * @arg {number} height
+   * @arg {SkillSize} size スキルの範囲
    * @returns {import('@minecraft/server').BlockLocationIterator}
    */
-  getArea(origin, player, width, depth, height) {
+  getArea(origin, player, size) {
     const facing = util.getDirection(player.getRotation().y); // 4つの方角として取得
     const start = { x: origin.x, y: origin.y, z: origin.z }
     const end = { x: origin.x, y: origin.y, z: origin.z }
@@ -94,31 +141,31 @@ export class SkillManager extends Base {
     
     // fix xz location by facing
     if (facing === Direction.North) {
-      start.x -= width;
-      end.x += width;
-      end.z -= depth;
+      start.x -= size.width;
+      end.x += size.width;
+      end.z -= size.depth;
     }
     if (facing === Direction.South) {
-      start.x += width;
-      end.x -= width;
-      end.z += depth;
+      start.x += size.width;
+      end.x -= size.width;
+      end.z += size.depth;
     }
     if (facing === Direction.East) {
-      start.z -= width;
-      end.z += width;
-      end.x += depth;
+      start.z -= size.width;
+      end.z += size.width;
+      end.x += size.depth;
     }
     if (facing === Direction.West) {
-      start.z += width;
-      end.z -= width;
-      end.x -= depth;
+      start.z += size.width;
+      end.z -= size.width;
+      end.x -= size.depth;
     }
     // fix y location: higher
-    if (playerY <= origin.y && origin.y <= playerY + height) {
+    if (playerY <= origin.y && origin.y <= playerY + size.height) {
       start.y = playerY;
     }
 
-    end.y = start.y + height;
+    end.y = start.y + size.height;
     
     return BlockVolumeUtils.getBlockLocationIterator({ from: start, to: end });
   }
@@ -185,8 +232,19 @@ export class SkillManager extends Base {
     this.breakSpeed = 0;
   }
   
-  /** @arg {Vector3} location */
+  /**
+   * @arg {Vector3} location
+   * @returns {boolean}
+   */
   static isInNatural(location) {
     return BlockVolumeUtils.isInside(NaturalArea, location);
+  }
+  
+  /**
+   * @arg {ItemStack} item
+   * @returns {boolean}
+   */
+  static isUpgraded(item) {
+    return item.getLore().some(l => l.includes('範囲破壊'));
   }
 }

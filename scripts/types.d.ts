@@ -1,18 +1,31 @@
 import * as mc from '@minecraft/server';
+import { PropertyId } from './util/constants';
 
-interface EntityComponents {
-  'minecraft:inventory': mc.EntityInventoryComponent;
-  'minecraft:item': mc.EntityItemComponent;
+export interface ISkill {
+  name: string;
+  form?: string;
+  mana?: number;
+  price?: number;
+  rate?: number;
+  origin?: number;
+  
+  size: SkillSize;
 }
 
-declare module '@minecraft/server' {
-  interface Player {
-    breakCount?: number;
-  }
-  interface Entity {
-    isPlayer: () => this is mc.Player;
-    getComponent<ID extends keyof EntityComponents>(componentId: ID): EntityComponents[ID];
-  }
+export interface SkillSize {
+  /** 横方向に何ブロック行くか */
+  width: number;
+  
+  /** 高さ方向に何ブロック行くか(足元起点) */
+  height: number;
+  
+  /** 奥行き方向に何ブロック行くか */
+  depth: number;
+}
+
+export interface PlayerMana {
+  value: number;
+  max: number;
 }
 
 export interface CommandData {
@@ -49,4 +62,37 @@ export interface BlockLoot {
   /** アイテムが当たった時にメッセージを出すか デフォルトはtrue */
   showMessage?: boolean;
   message?: string;
+}
+
+interface EntityComponents {
+  'minecraft:inventory': mc.EntityInventoryComponent;
+  'minecraft:item': mc.EntityItemComponent;
+}
+
+interface DynamicProperties {
+  [PropertyId.skillType]: number;
+  [PropertyId.skillEnabled]: boolean;
+  [PropertyId.toggleSneak]: boolean;
+  [PropertyId.showRandom]: boolean;
+  [PropertyId.hasSkill1]: boolean;
+  [PropertyId.hasSkill2]: boolean;
+  [PropertyId.hasSkill3]: boolean;
+  [PropertyId.hasSkill4]: boolean;
+  [PropertyId.hasSkill5]: boolean;
+}
+
+declare module '@minecraft/server' {
+  interface Player {
+    breakCount?: number;
+  }
+  interface Entity {
+    isPlayer: () => this is mc.Player;
+    getComponent<K extends keyof EntityComponents>(componentId: K): EntityComponents[K];
+    getDynamicProperty<K extends keyof DynamicProperties>(identifier: K): DynamicProperties[K] | undefined;
+    setDynamicProperty<K extends keyof DynamicProperties>(identifier: K, value: DynamicProperties[K]): void;
+  }
+  interface World {
+    getDynamicProperty<K extends keyof DynamicProperties>(identifier: K): DynamicProperties[K] | undefined;
+    setDynamicProperty<K extends keyof DynamicProperties>(identifier: K, value: DynamicProperties[K]): void;
+  }
 }
