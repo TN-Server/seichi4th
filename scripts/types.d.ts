@@ -1,7 +1,7 @@
 import * as mc from '@minecraft/server';
 import { PropertyId } from './util/constants';
 
-export interface ISkill {
+export interface ISkillData {
   name: string;
   form?: string;
   mana?: number;

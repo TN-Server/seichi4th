@@ -7,7 +7,7 @@ import { ManaManager } from './ManaManager';
 
 import { blockS1, blockS2, itemS1, itemS2, ignoreBlocks } from './blocks';
 import dropList from './drop_list';
-import { skills } from './skills';
+import { skillData } from './skills';
 
 /** @typedef {import('@minecraft/server').Vector3} Vector3 */
 /** @typedef {import('@minecraft/server').Block} Block */
@@ -91,7 +91,7 @@ export class SkillManager extends Base {
       if (SkillManager.isInNatural(block.location) && SkillManager.isUpgraded(handItem)) {
         const skillType = player.getDynamicProperty(PropertyId.skillType); // スキルの種類
         const isEnabled = player.getDynamicProperty(PropertyId.skillEnabled); // スキルオンかどうか
-        const hasMana = this.mana.has(player.id, skills[skillType].mana); // 必要量のマナあるか
+        const hasMana = this.mana.has(player.id, skillData[skillType].mana); // 必要量のマナあるか
         if (!hasMana) return;
         if (isEnabled && skillType > 0) return;//breakSkill({x,y,z}, player, skills[type].size, 1, type);
       }

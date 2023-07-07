@@ -11,7 +11,7 @@ export class ManaManager {
     
     world.afterEvents.playerJoin.subscribe(({ playerId }) => this.register(playerId, defaultMaxMana));
     world.afterEvents.playerLeave.subscribe(({ playerId }) => this.unregister(playerId));
-    system.runInterval(() => this.heal(), 20);
+    system.runInterval(() => this.heal(), healInterval);
   }
   
   get(playerId) {}

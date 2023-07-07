@@ -1,7 +1,7 @@
 export const UPGRADE_PRICE = 1000000;
 
-/** @type {Record<string, import('../types').ISkill>} */
-export const skills = {
+/** @type {Record<string, import('../types').ISkillData>} */
+export const skillData = {
   0: {
     name: 'Normal',
     size: { width: 1, height: 1, depth: 0 }
