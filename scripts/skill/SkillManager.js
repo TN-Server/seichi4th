@@ -7,7 +7,7 @@ import { ManaManager } from './ManaManager';
 
 import { blockS1, blockS2, itemS1, itemS2, ignoreBlocks } from './blocks';
 import dropList from './drop_list';
-import { skillData } from './skills';
+import { skillData, SkillType } from './skills';
 
 /** @typedef {import('@minecraft/server').Vector3} Vector3 */
 /** @typedef {import('@minecraft/server').Block} Block */
@@ -18,8 +18,6 @@ const AIR = MinecraftBlockTypes.air;
 /** @type {import('@minecraft/server').BlockVolume} */
 const NaturalArea = { from: { x: 144, y: -64, z: -96 }, to: { x: 207, y: 255, z: -33 } }
 
-const NormalSkillSize = { width: 1, height: 1, depth: 0 }
-
 const placeHolder = new PlaceHolder();
 placeHolder.register('x', ({x}) => x)
   .register('y', ({y}) => y)
@@ -28,7 +26,7 @@ placeHolder.register('x', ({x}) => x)
   .register('blockName', ({blockName}) => blockName)
   .register('player', ({player}) => player);
   
-const MineType = /** @type {const} */ ({
+export const MineType = /** @type {const} */ ({
   Normal: 0,
   Natural: 1
 });
@@ -39,9 +37,6 @@ export class SkillManager extends Base {
     super(main);
     
     this.mana = new ManaManager();
-    
-    /** 全体の破壊処理 */
-    this.enabled = true;
     
     /** 範囲破壊スキル */
     this.skillEnabled = true;
@@ -56,8 +51,6 @@ export class SkillManager extends Base {
    * @arg {import('@minecraft/server').BlockBreakAfterEvent} ev
    */
   onBreak(ev) {
-    if (!this.enabled) return;
-    
     const { block, player, brokenBlockPermutation: permutation } = ev;
     const blockId = permutation.type.id;
     
@@ -65,7 +58,7 @@ export class SkillManager extends Base {
     
     // 単発のドロップ
     if (blockS1.includes(blockId) || blockS2.includes(blockId) || SkillManager.isInNatural(block.location)) {
-      this.runBreak(player, block, blockId);
+      this.#runBreak(player, block, blockId);
     }
     
     // スキル発火
@@ -77,23 +70,23 @@ export class SkillManager extends Base {
       if (itemS1.includes(handItem.typeId) && blockS1.includes(blockId)) { // 人工1(シャベル)
         if (blockS1.indexOf(blockId) <= itemS1.indexOf(handItem.typeId)) { // 適正ツール判定
           const skillDuration = util.getScore(player, 'break_skill'); // スキル残り時間
-          if (skillDuration > 0) this.runSkill(player, block, blockId, MineType.Normal);
+          if (skillDuration > 0) this.#runSkill(player, block, SkillType.Normal);
         }
         
       } else if (itemS2.includes(handItem.typeId) && blockS2.includes(blockId)) { // 人工2(ツルハシ)
         if (blockS2.indexOf(blockId) <= itemS2.indexOf(handItem.typeId)) {
           const skillDuration = util.getScore(player, 'break_skill');
-          //if (score) breakSkill({x,y,z}, player, {x:3,y:2,z:1}, 0);
+          if (skillDuration > 0) this.#runSkill(player, block, SkillType.Normal);
         }
       }
       
       // 自然資源
       if (SkillManager.isInNatural(block.location) && SkillManager.isUpgraded(handItem)) {
-        const skillType = player.getDynamicProperty(PropertyId.skillType); // スキルの種類
+        const type = SkillManager.getSkillType(player); // スキルの種類
         const isEnabled = player.getDynamicProperty(PropertyId.skillEnabled); // スキルオンかどうか
-        const hasMana = this.mana.has(player.id, skillData[skillType].mana); // 必要量のマナあるか
+        const hasMana = this.mana.has(player.id, skillData[type].mana); // 必要量のマナあるか
         if (!hasMana) return;
-        if (isEnabled && skillType > 0) return;//breakSkill({x,y,z}, player, skills[type].size, 1, type);
+        if (isEnabled && type > 0) this.#runSkill(player, block, type);
       }
     }
   }
@@ -104,9 +97,9 @@ export class SkillManager extends Base {
    * @arg {Block} block
    * @arg {string} blockId
    */
-  runBreak(player, block, blockId) {
+  #runBreak(player, block, blockId) {
     if (blockId in dropList) {
-      this.lootTable(player, block, blockId);
+      this.#lootTable(player, block, blockId);
     
       system.run(() => {
         util.killDroppedItem(block.location, block.dimension, blockId);
@@ -117,23 +110,24 @@ export class SkillManager extends Base {
   /**
    * 範囲破壊の処理
    * @arg {Player} player
-   * @arg {Block} block
-   * @arg {string} blockId
-   * @arg {MineType[keyof MineType]} type
+   * @arg {Block} origin
+   * @arg {SkillType[keyof SkillType]} skillType
    */
-  runSkill(player, block, blockId, type) {
-
-
+  #runSkill(player, origin, skillType) {
+    const skill = skillData[skillType];
+    for (const location of this.getArea(origin, skill.size, player)) {
+      const block = origin.dimension.getBlock(origin.location);
+    }
   }
   
   /**
    * スキル範囲内のブロック座標を計算する
    * @arg {Vector3} origin 掘ったブロックの座標
-   * @arg {Player} player
    * @arg {SkillSize} size スキルの範囲
+   * @arg {Player} player
    * @returns {import('@minecraft/server').BlockLocationIterator}
    */
-  getArea(origin, player, size) {
+  getArea(origin, size, player) {
     const facing = util.getDirection(player.getRotation().y); // 4つの方角として取得
     const start = { x: origin.x, y: origin.y, z: origin.z }
     const end = { x: origin.x, y: origin.y, z: origin.z }
@@ -176,10 +170,10 @@ export class SkillManager extends Base {
    * @arg {Block} block
    * @arg {string} [blockId]
    */
-  lootTable(player, block, blockId = block.typeId) {
+  #lootTable(player, block, blockId = block.typeId) {
     const loot = dropList[blockId];
     if (!loot) return;
-    this.runLoot(loot, player, block, blockId);
+    this.#runLoot(loot, player, block, blockId);
   }
   
   /**
@@ -189,7 +183,7 @@ export class SkillManager extends Base {
    * @arg {Block} block
    * @arg {string} [blockId]
    */
-  runLoot(loot, player, block, blockId = block.typeId) {
+  #runLoot(loot, player, block, blockId = block.typeId) {
     const parseContext = { ...block.location, blockId, blockName: loot.name ?? '', player: player.name }
     
     if ('mp' in loot) util.addScore(player, 'mp', loot.mp);
@@ -221,7 +215,7 @@ export class SkillManager extends Base {
       
       if (Math.min(min, max) <= randomized && randomized <= Math.max(min, max)) {
         _loot.name = loot.name;
-        this.runLoot(_loot, player, block, blockId);
+        this.#runLoot(_loot, player, block, blockId);
       }
     });
     
@@ -230,6 +224,14 @@ export class SkillManager extends Base {
   #updateBreakSpeed() {
     util.setScore(' §l§f採掘量/秒', 'info', this.breakSpeed);
     this.breakSpeed = 0;
+  }
+  
+  /**
+   * @arg {Player} player
+   * @returns {SkillType[keyof SkillType]|undefined}
+   */
+  static getSkillType(player) {
+    return player.getDynamicProperty(PropertyId.skillType);
   }
   
   /**

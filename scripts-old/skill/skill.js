@@ -18,41 +18,6 @@ export const playerMana = new PlayerMana();
 let breakCount = 0;
 
 let air = MinecraftBlockTypes.air.createDefaultBlockPermutation(); // air permutation
-  
-world.events.beforeChat.subscribe(data => {
-  let {sender,message} = data;
-  
-  if (message.startsWith('!') || message.startsWith('！')) {
-    let [command, ...args] = message.replace(/^(!|！)/, '').split(' ');
-    
-    if (command == 'skillS') {
-      data.cancel = true;
-      if (!sender.hasTag('op')) return sender.tell('§cOP専用コマンドだよ');
-      if (skillS) {
-        skillS = false;
-        world.say(`${sender.name} >> disabled skillS`);
-      } else {
-        skillS = true;
-        world.say(`${sender.name} >> enabled skillS`);
-      }
-    }
-    
-    if (command == 'set') {
-      data.cancel = true;
-      if (!sender.hasTag('op')) return sender.tell('§cOP専用コマンドだよ');
-      sender.setDynamicProperty('skillType', Number(args[0]));
-    }
-    
-    if (command == 'nskill') {
-      data.cancel = true;
-      if (!sender.hasTag('op')) return sender.tell('§cOP専用コマンドだよ');
-      const current = world.getDynamicProperty('n_skill');
-      world.setDynamicProperty('n_skill', !current);
-      world.say(`§b${sender.name} >> NSkillを ${!current} に設定しました`);
-    }
-
-  }
-});
 
 export function onBreak(ev) {
   const {player, block, brokenBlockPermutation: permutation} = ev;
@@ -110,13 +75,13 @@ function skill(ev) {
 
 }
 
-/**
- * @param {object} pos (x,y,z)
- * @param {Player} player
- * @param {object} size (x,y,z)
- * @param {number} mode (0=人工, 1=自然)
- * @param {number} skillType
- */
+  /**
+   * @param {object} pos (x,y,z)
+   * @param {Player} player
+   * @param {object} size (x,y,z)
+   * @param {number} mode (0=人工, 1=自然)
+   * @param {number} skillType
+   */
 function breakSkill(pos, player, size, mode, skillType = 0) {
   if (sDebug) exec = Date.now();
   let _size = fixSize(size);
@@ -262,3 +227,38 @@ function killItem(loc, dimension, id) {
     e.kill();
   }
 }
+
+
+world.events.beforeChat.subscribe(data => {
+  let {sender,message} = data;
+  
+  if (message.startsWith('!') || message.startsWith('！')) {
+    let [command, ...args] = message.replace(/^(!|！)/, '').split(' ');
+    
+    if (command == 'skillS') {
+      data.cancel = true;
+      if (!sender.hasTag('op')) return sender.tell('§cOP専用コマンドだよ');
+      if (skillS) {
+        skillS = false;
+        world.say(`${sender.name} >> disabled skillS`);
+      } else {
+        skillS = true;
+        world.say(`${sender.name} >> enabled skillS`);
+      }
+    }
+    
+    if (command == 'set') {
+      data.cancel = true;
+      if (!sender.hasTag('op')) return sender.tell('§cOP専用コマンドだよ');
+      sender.setDynamicProperty('skillType', Number(args[0]));
+    }
+    
+    if (command == 'nskill') {
+      data.cancel = true;
+      if (!sender.hasTag('op')) return sender.tell('§cOP専用コマンドだよ');
+      const current = world.getDynamicProperty('n_skill');
+      world.setDynamicProperty('n_skill', !current);
+      world.say(`§b${sender.name} >> NSkillを ${!current} に設定しました`);
+    }
+  }
+});

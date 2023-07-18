@@ -32,8 +32,5 @@ export function setScore(target, objective, score) {
  * @returns {number} add後のスコア
  */
 export function addScore(target, objective, score) {
-  const currentScore = getScore(target, objective, true);
-  const value = currentScore + score;
-  setScore(target, objective, value);
-  return value;
+  return world.scoreboard.getObjective(objective).addScore(target, score);
 }

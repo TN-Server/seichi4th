@@ -14,23 +14,81 @@ export class ManaManager {
     system.runInterval(() => this.heal(), healInterval);
   }
   
-  get(playerId) {}
+  /**
+   * @arg {string} playerId
+   * @returns {number} The amount of Mana
+   */
+  get(playerId) {
+    return this.#playerMana.get(playerId)?.value ?? 0;
+  }
   
-  set(playerId, value) {}
+  /**
+   * @arg {string} playerId
+   * @arg {number} value The amount of Mana
+   */
+  set(playerId, value) {
+      const data = this.#playerMana.get(playerId);
+      data.value = value;
+  }
   
-  add(playerId, value) {}
+  /**
+   * @arg {string} playerId
+   * @arg {number} value
+   * @returns {number}
+   */
+  add(playerId, value) {
+    const newValue = this.get(playerId) + value;
+    this.set(playerId, newValue);
+    return newValue;
+  }
   
-  remove(playerId, value) {}
+  /**
+   * @arg {string} playerId
+   * @arg {number} value
+   * @returns {boolean}
+   */
+  has(playerId, value) {
+    return this.get(playerId) >= value;
+  }
   
-  has(playerId, value) {}
+  /**
+   * @arg {string} playerId
+   * @arg {number} maxValue
+   */
+  register(playerId, maxValue) {
+    const data = { value: maxValue, max: maxValue }
+    this.#playerMana.set(playerId, data);
+  }
   
-  register(playerId, maxValue) {}
+  /**
+   * @arg {string} playerId
+   */
+  unregister(playerId) {
+    this.#playerMana.delete(playerId);
+  }
   
-  unregister(playerId) {}
+  /**
+   * @arg {string} playerId
+   * @returns {number|null} The max amount of Mana
+   */
+  getMax(playerId) {
+    return this.#playerMana.get(playerId)?.max ?? null
+  }
   
-  setMax(playerId, maxValue) {}
+  /**
+   * @arg {string} playerId
+   * @arg {number} maxValue
+   */
+  setMax(playerId, maxValue) {
+    const data = this.#playerMana.get(playerId);
+    data.max = maxValue;
+  }
   
-  heal() {}
+  heal() {
+    for (const data of this.#playerMana.values()) {
+      if (data.value < data.max) data.value++;
+    }
+  }
   
   toJSON() {
     return Object.fromEntries(this.#playerMana);

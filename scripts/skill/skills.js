@@ -1,12 +1,21 @@
 export const UPGRADE_PRICE = 1000000;
 
-/** @type {Record<string, import('../types').ISkillData>} */
+export const SkillType = /** @type {const} */ ({
+  Normal: 0,
+  Level1: 1,
+  Level2: 2,
+  Level3: 3,
+  Level4: 4,
+  Level5: 5
+});
+
+/** @type {Record<SkillType[keyof SkillType], import('../types').ISkillData>} */
 export const skillData = {
-  0: {
+  [SkillType.Normal]: {
     name: 'Normal',
     size: { width: 1, height: 1, depth: 0 }
   },
-  1: {
+  [SkillType.Level1]: {
     name: 'Lv.1',
     form: 'Lv.1 (1*2*1)',
     price: 500000,
@@ -15,7 +24,7 @@ export const skillData = {
     mana: 0,
     size: { width: 0, height: 1, depth: 0 } // 2blocks*0.80=1.6
   },
-  2: {
+  [SkillType.Level2]: {
     name: 'Lv.2',
     form: 'Lv.2 (3*1*1)',
     price: 2000000,
@@ -24,7 +33,7 @@ export const skillData = {
     mana: 0,
     size: { width: 1, height: 0, depth: 0 } // 3*0.75=2.25
   },
-  3: {
+  [SkillType.Level3]: {
     name: 'Lv.3',
     form: 'Lv.3 (3*2*1)',
     price: 8000000,
@@ -33,7 +42,7 @@ export const skillData = {
     mana: 0,
     size: { width: 1, height: 1, depth: 0 } // 6*0.52=3.12
   },
-  4: {
+  [SkillType.Level4]: {
     name: 'Lv.4',
     form: 'Lv.4 (3*3*1)',
     price: 20000000,
@@ -42,7 +51,7 @@ export const skillData = {
     mana: 3,
     size: { width: 1, height: 2, depth: 0 } // 9*0.31=2.79
   },
-  5: {
+  [SkillType.Level5]: {
     name: 'Lv.5',
     form: 'Lv.5 (3*3*3)',
     price: 60000000,

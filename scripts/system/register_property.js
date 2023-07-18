@@ -1,4 +1,4 @@
-import { world, DynamicPropertiesDefinition, MinecraftEntityTypes } from '@minecraft/server';
+import { world, DynamicPropertiesDefinition } from '@minecraft/server';
 import { PropertyId } from '../util/constants';
 
 world.afterEvents.worldInitialize.subscribe(({ propertyRegistry }) => {
@@ -14,5 +14,5 @@ world.afterEvents.worldInitialize.subscribe(({ propertyRegistry }) => {
   def.defineBoolean(PropertyId.hasSkill4);
   def.defineBoolean(PropertyId.hasSkill5);
   
-  propertyRegistry.registerEntityTypeDynamicProperties(def, MinecraftEntityTypes.player);
+  propertyRegistry.registerEntityTypeDynamicProperties(def, 'minecraft:player');
 });

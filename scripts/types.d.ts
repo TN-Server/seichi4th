@@ -1,5 +1,8 @@
 import * as mc from '@minecraft/server';
 import { PropertyId } from './util/constants';
+import { SkillType } from './skill/skills';
+
+type SkillTypes = typeof SkillType[keyof typeof SkillType];
 
 export interface ISkillData {
   name: string;
@@ -70,7 +73,7 @@ interface EntityComponents {
 }
 
 interface DynamicProperties {
-  [PropertyId.skillType]: number;
+  [PropertyId.skillType]: SkillTypes;
   [PropertyId.skillEnabled]: boolean;
   [PropertyId.toggleSneak]: boolean;
   [PropertyId.showRandom]: boolean;
