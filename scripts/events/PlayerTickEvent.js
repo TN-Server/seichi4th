@@ -1,7 +1,7 @@
 import { system, world } from "@minecraft/server";
 import { EventSignal } from "./EventSignal";
 
-/** @typedef {import('./types').IPlayerTickEvent} IPlayerTickEvent */
+/** @typedef {import('./types').PlayerTickEvent} PlayerTickEvent */
 
 export class PlayerTickEventSignal extends EventSignal {
   constructor() {
@@ -15,19 +15,19 @@ export class PlayerTickEventSignal extends EventSignal {
   }
 
   /** 
-   * @arg {(arg: IPlayerTickEvent) => void} callback
-   * @returns {(arg: IPlayerTickEvent) => void}
+   * @arg {(arg: PlayerTickEvent) => void} callback
+   * @returns {(arg: PlayerTickEvent) => void}
    */
   subscribe(callback) {
     return super.subscribe(callback);
   }
    
-  /** @arg {(arg: IPlayerTickEvent) => void} callback */
+  /** @arg {(arg: PlayerTickEvent) => void} callback */
   unsubscribe(callback) {
     super.unsubscribe(callback);
   }
   
-  /** @arg {IPlayerTickEvent} event */
+  /** @arg {PlayerTickEvent} event */
   emit(event) {
     super.emit(event);
   }

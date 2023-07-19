@@ -1,52 +1,38 @@
-import { system, world } from "@minecraft/server";
-
-import { Module } from './Module';
-import { main } from '../index';
+import * as MC from "@minecraft/server";
+import * as config from './config.js';
 import * as util from '../util/util';
-import { events } from '../events/index.js';
 
-export class Nuker extends Module {
-  /** @type {import('./types').Nuker} */
-  config;
+import { main } from '../index.js';
   
-  /** @arg {import('./types').Nuker} config */
-  constructor(config) {
-    super(config);
-    
-    world.afterEvents.blockBreak.subscribe(this.#handleBreak);
-    events.playerTick.subscribe(this.#handlePlayer);
+/** @arg {MC.BlockBreakAfterEvent} ev */
+export function handleBreak(ev) {
+  const { player } = ev;
+
+  // nuker
+  player.breakCount ??= 0;
+  player.breakCount++;
+  if (config.nuker.enabled && player.breakCount > config.nuker.limit) {
+    return cancelBreak(ev);
   }
   
-  /** @arg {import('../events/types').IPlayerTickEvent} ev */
-  #handlePlayer(ev) {
-    if (!this.isEnabled) return;
-    const { player } = ev;
-    
-    if (this.isEnabled && player.breakCount > this.config.limit) {
-      player.sendMessage('こら');
-    }
-  }
-  
-  /** @arg {import('@minecraft/server').BlockBreakAfterEvent} ev */
-  #handleBreak(ev) {
-    const { player } = ev;
-  
-    // nuker
-    player.breakCount ??= 0;
-    player.breakCount++;
-    if (this.isEnabled && player.breakCount > this.config.limit) {
-      cancelBreak(ev);
-      return;
-    }
-    
-    // trigger safe break event
-    main.skills.onBreak(ev);
-  }
+  // trigger safe break event
+  main.skills.onBreak(ev);
 }
 
-/** @arg {import('@minecraft/server').BlockBreakAfterEvent} ev */
+/** @arg {import('../events/types').PlayerTickEvent} ev */
+export function handlePlayer(ev) {
+  if (!config.nuker.enabled) return;
+  const { player } = ev;
+  
+  if (player.breakCount > config.nuker.limit) {
+    player.sendMessage('こら');
+  }
+  player.breakCount = 0;
+}
+
+/** @arg {MC.BlockBreakAfterEvent} ev */
 function cancelBreak(ev) {
-  system.run(() => {
+  MC.system.run(() => {
     util.killDroppedItem(ev.block.location, ev.dimension);
     ev.block.setPermutation(ev.brokenBlockPermutation);
   });
