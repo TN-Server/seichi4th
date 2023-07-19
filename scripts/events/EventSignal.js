@@ -1,5 +1,3 @@
-
-
 export class EventSignal {
   /** @type {Set<Function>} */
   #callbacks;

@@ -1,7 +1,7 @@
 import { world } from '@minecraft/server';
 
 const modules = [
-  
+  'system/register_command.js'
 ];
 
 /** @type {Promise<boolean>[]} */

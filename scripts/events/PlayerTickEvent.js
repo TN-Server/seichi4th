@@ -7,7 +7,7 @@ export class PlayerTickEventSignal extends EventSignal {
   constructor() {
     super();
     
-    system.runInterval(this.#handleLoop.bind(this));
+    system.runInterval(() => this.#handleLoop());
   }
 
   #handleLoop() {

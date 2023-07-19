@@ -16,7 +16,6 @@ import { SkillManager } from './skill/SkillManager';
 import { CommandManager } from './commands/CommandManager';
 import { AntiCheat } from './anticheat/main';
 
-
 export class Main {
   constructor() {
     console.warn('initialized');
@@ -28,6 +27,7 @@ export class Main {
     this.deltaTimes = [];
   }
 
+  /** @type {typeof config} */
   get config() {
     return config;
   }
@@ -41,8 +41,8 @@ export class Main {
 const main = new Main();
 export { main }
 
-world.afterEvents.worldInitialize.subscribe(() => {
-  import('./loader.js');
+world.afterEvents.worldInitialize.subscribe(async () => {
+  await import('./loader.js');
 });
 
 /** @type {number} */
