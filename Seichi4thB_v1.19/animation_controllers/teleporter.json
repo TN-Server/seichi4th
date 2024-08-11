@@ -1,0 +1,87 @@
+//by RetoRuto9900K @tutinoko_kusaa
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.teleporter1": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "tp_lobby0": "q.get_equipped_item_name(0) =='tp_lobby' && q.is_sneaking"
+                        },
+                        {
+                            "tp_shop0": "q.get_equipped_item_name(0) =='tp_shop' && q.is_sneaking"
+                        },
+                        {
+                            "tp_lobby1": "q.get_equipped_item_name(1) =='tp_lobby' && q.is_sneaking"
+                        },
+                        {
+                            "tp_shop1": "q.get_equipped_item_name(1) =='tp_shop' && q.is_sneaking"
+                        }
+                    ]
+                },
+                "tp_lobby0": {
+                    "on_entry": [
+                        "/execute @s ~~~ function tp/lobby"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.get_equipped_item_name(0) !='tp_lobby' || !q.is_sneaking"
+                        }
+                    ]
+                },
+                "tp_shop0": {
+                    "on_entry": [
+                        "/execute @s ~~~ function tp/shop"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.get_equipped_item_name(0) !='tp_shop' || !q.is_sneaking"
+                        }
+                    ]
+                },
+                "tp_lobby1": {
+                    "on_entry": [
+                        "/execute @s ~~~ function tp/lobby"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.get_equipped_item_name(1) !='tp_lobby' || !q.is_sneaking"
+                        }
+                    ]
+                },
+                "tp_shop1": {
+                    "on_entry": [
+                        "/execute @s ~~~ function tp/shop"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.get_equipped_item_name(1) !='tp_shop' || !q.is_sneaking"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.teleporter2": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "teleporter_sneaking": "q.get_equipped_item_name =='teleporter' && q.is_sneaking"
+                        }
+                    ]
+                },
+                "teleporter_sneaking": {
+                    "on_entry": [
+                        "/function tp/teleporter_sneaking"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.get_equipped_item_name !='teleporter' || !q.is_sneaking"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

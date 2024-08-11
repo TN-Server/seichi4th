@@ -1,0 +1,31 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Seichi4thG_v1.0",
+    "description": "整地鯖4期のGameTestパックです。\nMade by tutinoko2048\nPowered by timer.js @lapis256",
+    "uuid": "a5149b31-2f9c-482b-84c5-079aed763f26",
+    "version": [ 1, 0, 0 ],
+    "min_engine_version": [ 1, 18, 0 ]
+  },
+  "modules": [
+    {
+      "description": "整地鯖4期のGameTestパックです。\nMade by tutinoko2048\nPowered by timer.js @lapis256",
+      "type": "script",
+      "language": "javascript",
+      "uuid": "9145f65a-cd29-4e35-904c-41e345f4e56e",
+      "version": [ 1, 0, 0 ],
+      "entry": "scripts/index.js"
+    }
+  ],
+  "capabilities": [ "script_eval" ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.1.0-beta"
+    },
+    {
+      "module_name": "@minecraft/server-ui", // ui
+      "version": "1.0.0-beta"
+    }
+  ]
+}

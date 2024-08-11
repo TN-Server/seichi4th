@@ -1,0 +1,29 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:p_wooden_shovel"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "A",
+      "B"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:dirt_material",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:s_wooden_shovel",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:p_wooden_shovel",
+      "count": 1
+    }
+  }
+}

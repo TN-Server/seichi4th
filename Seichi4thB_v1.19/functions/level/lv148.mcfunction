@@ -1,0 +1,8 @@
+scoreboard players add @s levelup_count 12859
+scoreboard players set @s level 148
+tellraw @a[tag=!no_levelup] {"rawtext":[{"selector":"@s"},{"text":" §r§aLv.147 -> Lv.148"}]}
+title @s title §r
+title @s subtitle §aLevel up!! Lv.147 -> Lv.148
+playsound random.levelup @s ~~~ 1 0.8
+
+scoreboard players add @s detect_levelup 1

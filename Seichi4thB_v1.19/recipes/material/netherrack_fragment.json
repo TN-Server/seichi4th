@@ -1,0 +1,19 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shapeless": {
+    "description": {
+    "identifier": "seichi:netherrack_fragment"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "seichi:netherrack_pebble"
+      }
+    ],
+    "result": {
+      "item": "seichi:netherrack_fragment",
+      "count": 9
+    }
+  }
+}

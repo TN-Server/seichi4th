@@ -1,0 +1,42 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.main": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "op_teleport": "q.get_equipped_item_name =='op_compass' && v.attack_time"
+                        },
+                        {
+                            "toggle_status": "q.get_equipped_item_name == 'op_compass' && q.is_sneaking && q.is_jumping"
+                        }
+                    ]
+                },
+                "op_teleport": {
+                    "on_entry": [
+                        "/execute @p ~~~ tp @s[tag=op] ^^^3",
+                        "/execute @p ~~~ title @s[tag=!op] actionbar §l§c権限がないため使用できません",
+                        "/execute @p ~~~ execute @s[tag=!op] ~~~ say §l§c@s §fがコンパスを使用しています"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.get_equipped_item_name !='op_compass' || !v.attack_time"
+                        }
+                    ]
+                },
+                "toggle_status": {
+                    "on_entry": [
+                        "/execute @s[rx=90,rxm=70] ~~~ tag @s remove nostatus",
+                        "/execute @s[rx=-70,rxm=-90] ~~~ tag @s add nostatus"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.get_equipped_item_name != 'op_compass' || !q.is_sneaking || !q.is_jumping"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

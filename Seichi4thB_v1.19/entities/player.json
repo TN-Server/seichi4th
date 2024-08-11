@@ -1,0 +1,329 @@
+{
+  "format_version": "1.17.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false,
+      "scripts": {
+        "animate": [
+          "main",
+          "teleporter1",
+          "sneaking",
+          "death",
+          "skill2"
+        ]
+      },
+      "animations": {
+        "main": "controller.animation.main",
+        "teleporter1": "controller.animation.teleporter1",
+        "sneaking": "controller.animation.sneaking",
+        "death": "controller.animation.death",
+        "skill2": "controller.animation.skill2"
+      }
+    },
+    "component_groups": {
+      "group_vsmall": {
+        "minecraft:scale": {
+          "value": 0.2
+        }
+      },
+      "group_small": {
+        "minecraft:scale": {
+          "value": 0.5
+        }
+      },
+      "group_normal": {
+        "minecraft:scale": {
+          "value": 1
+        }
+      },
+      "group_big": {
+        "minecraft:scale": {
+          "value": 2
+        }
+      },
+      "group_vbig": {
+        "minecraft:scale": {
+          "value": 4
+        }
+      },
+      "group_kick": {
+        "minecraft:explode": {
+          "fuse_length": 0,
+          "fuse_lit": true,
+          "power": 0,
+          "causes_fire": false,
+          "breaks_blocks": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_ability",
+                  "operator": "==",
+                  "value": "mayfly"
+                }
+              ]
+            },
+            "event": "event_mayfly_on"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_ability",
+                  "operator": "!=",
+                  "value": "mayfly"
+                }
+              ]
+            },
+            "event": "event_mayfly_off"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_equipment",
+                  "domain": "feet",
+                  "operator": "==",
+                  "value": "seichi:speed_boots"
+                }
+              ]
+            },
+            "event": "event_speed_boots_add"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_equipment",
+                  "domain": "feet",
+                  "operator": "!=",
+                  "value": "seichi:speed_boots"
+                }
+              ]
+            },
+            "event": "event_speed_boots_remove"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_equipment",
+                  "operator": "==",
+                  "value": "minecraft:movingBlock"
+                }
+              ]
+            },
+            "event": "event_movingblock_add"
+          }
+        ]
+      },
+      "minecraft:type_family": {
+        "family": [
+          "player"
+        ]
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.8
+      },
+      "minecraft:can_climb": {},
+      "minecraft:movement": {
+        "value": 0.1
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 1
+          }
+        ]
+      },
+      "minecraft:attack": {
+        "damage": 1
+      },
+      "minecraft:player.saturation": {
+        "value": 20
+      },
+      "minecraft:player.exhaustion": {
+        "value": 0,
+        "max": 4
+      },
+      "minecraft:player.level": {
+        "value": 0,
+        "max": 24791
+      },
+      "minecraft:player.experience": {
+        "value": 0,
+        "max": 1
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": -1,
+        "inhale_time": 3.75,
+        "generates_bubbles": false
+      },
+      "minecraft:nameable": {
+        "always_show": true,
+        "allow_name_tag_renaming": true
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:block_climber": {}
+    },
+    "events": {
+      "tn:event_sneak": {},
+      "tn:rank": {},
+      "tn:interact": {},
+      "tn:toggle_skill": {},
+      "event_movingblock_add": {
+        "run_command": {
+          "command": [
+              "tag @s add movingBlock",
+              "say  §l§c@s がmovingBlockを所持しています",
+              "execute @a[tag=op] ~~~ playsound note.harp @s",
+              "clear @s[tag=!op]"
+            ]
+         }
+      },
+      "event_speed_boots_add": {
+        "run_command": {
+          "command": [
+              "tag @s add speed_boots"
+            ]
+         }
+      },
+      "event_speed_boots_remove": {
+        "run_command": {
+          "command": [
+              "tag @s remove speed_boots"
+            ]
+         }
+      },
+      "event_mayfly_on": {
+        "run_command": {
+          "command": [
+              "tag @s add mayfly"
+            ]
+         }
+      },
+      "event_mayfly_off": {
+        "run_command": {
+          "command": [
+              "tag @s remove mayfly"
+            ]
+         }
+      },
+      "event_kick": {
+        "add": {
+          "component_groups": [
+            "group_kick"
+          ]
+        }
+      },
+      "event_reset": {
+        "add": {
+          "component_groups": [
+            "group_normal"
+          ]
+        }
+      },
+      "event_vsmall": {
+        "add": {
+          "component_groups": [
+            "group_vsmall"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "group_small",
+            "group_normal",
+            "group_big",
+            "group_vbig"
+          ]
+        }
+      },
+      "event_small": {
+        "add": {
+          "component_groups": [
+            "group_small"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "group_vsmall",
+            "group_normal",
+            "group_big",
+            "group_vbig"
+          ]
+        }
+      },
+      "event_normal": {
+        "add": {
+          "component_groups": [
+            "group_normal"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "group_vsmall",
+            "group_small",
+            "group_big",
+            "group_vbig"
+          ]
+        }
+      },
+      "event_big": {
+        "add": {
+          "component_groups": [
+            "group_big"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "group_vsmall",
+            "group_small",
+            "group_normal",
+            "group_vbig"
+          ]
+        }
+      },
+      "event_vbig": {
+        "add": {
+          "component_groups": [
+            "group_vbig"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "group_vsmall",
+            "group_small",
+            "group_normal",
+            "group_big"
+          ]
+        }
+      }
+    }
+  }
+}

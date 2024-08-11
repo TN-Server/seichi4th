@@ -1,0 +1,19 @@
+{
+  "format_version": "1.15.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "seichi:uranium_feature"
+    },
+    "count": 6,
+    "replace_rules": [
+      {
+        "places_block": "seichi:n_uranium",
+        "may_replace": ["minecraft:stone"]
+      },
+      {
+        "places_block": "seichi:n_uranium_deepslate",
+        "may_replace": ["minecraft:deepslate"]
+      }
+    ]
+  }
+}

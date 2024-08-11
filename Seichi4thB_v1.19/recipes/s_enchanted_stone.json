@@ -1,0 +1,30 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:s_enchanted_stone"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "AAA",
+      "ABA",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:stone_fragment",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:s_emerald_shard",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:s_enchanted_stone",
+      "count": 1
+    }
+  }
+}

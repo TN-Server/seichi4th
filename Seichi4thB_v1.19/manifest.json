@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "整地鯖4期最後のビヘイビアーパックです。\nMade by tutinoko2048, sand paper52",
+    "name": "Seichi4thB_v1.19.0",
+    "uuid": "cb3958f0-2e30-11eb-b757-03f56f120d4c",
+    "version": [ 1,19,0 ],
+    "min_engine_version": [ 1, 16, 210 ] 
+  },
+  "modules": [
+    {
+      "description": "整地鯖4期最後のビヘイビアーパックです。\nMade by tutinoko2048, sand paper52",
+      "type": "data",
+      "uuid": "cb39ce20-2e30-11eb-f885-c1b12fcfb45c",
+      "version": [ 1,19,0 ]
+    }
+  ]
+}

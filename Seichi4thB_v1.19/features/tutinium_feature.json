@@ -1,0 +1,19 @@
+{
+  "format_version": "1.15.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "seichi:tutinium_feature"
+    },
+    "count": 3,
+    "replace_rules": [
+      {
+        "places_block": "seichi:n_tutinium",
+        "may_replace": ["minecraft:stone"]
+      },
+      {
+        "places_block": "seichi:n_tutinium_deepslate",
+        "may_replace": ["minecraft:deepslate"]
+      }
+    ]
+  }
+}

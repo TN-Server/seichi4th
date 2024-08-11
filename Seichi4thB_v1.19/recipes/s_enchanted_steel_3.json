@@ -1,0 +1,42 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:s_enchanted_steel_3"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "ABC",
+      "DED",
+      "CBA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:s_emerald_paxel_2",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:s_steel_block",
+        "data": 0
+      },
+      "C": {
+        "item": "seichi:s_emerald_paxel_3",
+        "data": 0
+      },
+      "D": {
+        "item": "seichi:s_steel",
+        "data": 0
+      },
+      "E": {
+        "item": "seichi:s_enchanted_deepslate",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:s_enchanted_steel",
+      "count": 1
+    }
+  }
+}

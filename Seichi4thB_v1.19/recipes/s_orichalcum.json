@@ -1,0 +1,19 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shapeless": {
+    "description": {
+    "identifier": "seichi:s_orichalcum"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "seichi:s_orichalcum_block"
+      }
+    ],
+    "result": {
+      "item": "seichi:s_orichalcum",
+      "count": 9
+    }
+  }
+}

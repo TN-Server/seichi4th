@@ -1,0 +1,17 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:block": {
+    "description": {
+      "identifier": "seichi:s_dirt",
+      "is_experimental": false,
+      "register_to_creative_menu": true
+    },
+    "components": {
+      "minecraft:destroy_time": 0.5,
+      "minecraft:explosion_resistance": 0.0,
+      "minecraft:map_color": "#000000",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": 0
+    }
+  }
+}

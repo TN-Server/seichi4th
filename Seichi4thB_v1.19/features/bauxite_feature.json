@@ -1,0 +1,19 @@
+{
+  "format_version": "1.15.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "seichi:bauxite_feature"
+    },
+    "count": 8,
+    "replace_rules": [
+      {
+        "places_block": "seichi:n_bauxite",
+        "may_replace": ["minecraft:stone"]
+      },
+      {
+        "places_block": "seichi:n_bauxite_deepslate",
+        "may_replace": ["minecraft:deepslate"]
+      }
+    ]
+  }
+}

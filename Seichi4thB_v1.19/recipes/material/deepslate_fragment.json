@@ -1,0 +1,19 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shapeless": {
+    "description": {
+    "identifier": "seichi:deepslate_fragment"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "seichi:deepslate_pebble"
+      }
+    ],
+    "result": {
+      "item": "seichi:deepslate_fragment",
+      "count": 9
+    }
+  }
+}

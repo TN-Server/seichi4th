@@ -1,0 +1,30 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:s_emerald_paxel_10"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "AAA",
+      "ABA",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:s_new_enchanted_alminium",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:s_emerald_paxel_9",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:s_emerald_paxel_10",
+      "count": 1
+    }
+  }
+}

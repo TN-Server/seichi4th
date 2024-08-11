@@ -1,0 +1,50 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:p_netherite_shovel"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "ABC",
+      "DEF",
+      " G"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:dirt_material",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:sand_material",
+        "data": 0
+      },
+      "C": {
+        "item": "seichi:redsand_material",
+        "data": 0
+      },
+      "D": {
+        "item": "seichi:snow_material",
+        "data": 0
+      },
+      "E": {
+        "item": "seichi:s_netherite_shovel",
+        "data": 0
+      },
+      "F": {
+        "item": "seichi:clay_material",
+        "data": 0
+      },
+      "G": {
+        "item": "seichi:gravel_material",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:p_netherite_shovel",
+      "count": 1
+    }
+  }
+}

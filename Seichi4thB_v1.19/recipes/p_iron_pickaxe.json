@@ -1,0 +1,38 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:p_iron_pickaxe"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      " A ",
+      "BCB",
+      " D "
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:netherrack_pebble",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:stone_pebble",
+        "data": 0
+      },
+      "C": {
+        "item": "seichi:s_iron_pickaxe",
+        "data": 0
+      },
+      "D": {
+        "item": "seichi:sandstone_pebble",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:p_iron_pickaxe",
+      "count": 1
+    }
+  }
+}

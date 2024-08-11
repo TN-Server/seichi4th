@@ -1,0 +1,38 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:p_golden_shovel"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      " A ",
+      "BCB",
+      " D "
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:snow_material",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:sand_material",
+        "data": 0
+      },
+      "C": {
+        "item": "seichi:s_golden_shovel",
+        "data": 0
+      },
+      "D": {
+        "item": "seichi:redsand_material",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:p_golden_shovel",
+      "count": 1
+    }
+  }
+}

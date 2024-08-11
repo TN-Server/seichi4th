@@ -1,0 +1,18 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:block": {
+    "description": {
+      "identifier": "seichi:indigo_reactor",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:destroy_time": 10000,
+      "minecraft:explosion_resistance": 10000,
+      "minecraft:map_color": "#000000",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": 1
+    }
+  }
+}

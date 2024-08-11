@@ -1,0 +1,19 @@
+{
+  "format_version": "1.15.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "seichi:s_emerald_feature"
+    },
+    "count": 4,
+    "replace_rules": [
+      {
+        "places_block": "seichi:n_emerald",
+        "may_replace": ["minecraft:stone"]
+      },
+      {
+        "places_block": "seichi:n_emerald_deepslate",
+        "may_replace": ["minecraft:deepslate"]
+      }
+    ]
+  }
+}

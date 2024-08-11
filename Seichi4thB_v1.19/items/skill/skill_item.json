@@ -1,0 +1,20 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:item": {
+        "description": {
+            "identifier": "seichi:skill_item",
+            "category": "Equipment"
+        },
+        "components": {
+            "minecraft:render_offsets": "miscellaneous",
+            "minecraft:allow_off_hand": true,
+            "minecraft:icon": {
+                "texture": "skill_item"
+            },
+            "minecraft:max_stack_size": 64,
+            "minecraft:foil": false,
+            "minecraft:can_destroy_in_creative": true,
+            "minecraft:display_name": {}
+        }
+    }
+}

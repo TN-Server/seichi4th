@@ -1,0 +1,62 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:block": {
+    "description": {
+      "identifier": "seichi:n_ochre_froglight",
+      "properties": {
+        "seichi:block_axis": ["y", "x", "z"]
+      }
+    },
+    "components": {
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "s_ochre_froglight_side",
+          "render_method": "opaque"
+        },
+        "up": {
+          "texture": "s_ochre_froglight_top",
+          "render_method": "opaque"
+        },
+        "down": "up"
+      },
+      "minecraft:unit_cube": {},
+      "minecraft:display_name": "mp",
+      "minecraft:breathability": "air",
+      "minecraft:destroy_time": 0.3,
+      "minecraft:explosion_resistance": 0.3,
+      "minecraft:map_color": "#000000",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": 1,
+      "minecraft:on_player_placing": {
+        "event": "seichi:block_placed"
+      }
+    },
+    "events": {
+      "seichi:block_placed": {
+        "set_block_property": {
+          "seichi:block_axis": "((query.cardinal_block_face_placed_on == 2.0 || query.cardinal_block_face_placed_on == 3.0) ? 'z' : ((query.cardinal_block_face_placed_on == 4.0 || query.cardinal_block_face_placed_on == 5.0) ? 'x' : 'y'))"
+        }
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_property('seichi:block_axis') == 'x'",
+        "components": {
+          "minecraft:rotation": [0, 0, -90]
+        }
+      },
+      {
+        "condition": "query.block_property('seichi:block_axis') == 'y'",
+        "components": {
+          "minecraft:rotation": [0, 0, 0]
+        }
+      },
+      {
+        "condition": "query.block_property('seichi:block_axis') == 'z'",
+        "components": {
+          "minecraft:rotation": [90, 0, 0]
+        }
+      }
+    ]
+  }
+}

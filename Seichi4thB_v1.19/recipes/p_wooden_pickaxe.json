@@ -1,0 +1,29 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:p_wooden_pickaxe"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "A",
+      "B"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:stone_pebble",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:s_wooden_pickaxe",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:p_wooden_pickaxe",
+      "count": 1
+    }
+  }
+}

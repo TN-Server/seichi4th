@@ -1,0 +1,10 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:block": {
+    "description": {
+      "identifier": "seichi:n_leaves_oak",
+      "is_experimental": false,
+      "register_to_creative_menu": true
+    }
+  }
+}

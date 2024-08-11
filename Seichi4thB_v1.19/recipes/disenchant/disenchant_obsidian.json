@@ -1,0 +1,20 @@
+{
+    "format_version": "1.14",
+    "minecraft:recipe_material_reduction": {
+      "description": {
+        "identifier": "seichi:disenchant_obsidian"
+      },
+      "tags": "material_reducer",
+      "input": "seichi:s_enchanted_obsidian",
+      "output": [
+        {
+          "count": 1,
+          "item": "seichi:obsidian_pebble"
+        },
+        {
+          "count": 1,
+          "item": "seichi:s_emerald_block"
+        }
+      ]
+    }
+  }

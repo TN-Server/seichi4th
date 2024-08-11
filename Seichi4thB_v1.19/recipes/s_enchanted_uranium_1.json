@@ -1,0 +1,38 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:s_enchanted_uranium_1"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "ABA",
+      "CDC",
+      "ABA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:p_stick",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:s_uranium",
+        "data": 0
+      },
+      "C": {
+        "item": "seichi:s_uranium_block",
+        "data": 0
+      },
+      "D": {
+        "item": "seichi:s_enchanted_deepslate",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:s_new_enchanted_uranium",
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "seichi:s_test",
+            "properties": {
+                "seichi:player_destroyed": [
+                    0,
+                    1
+                ]
+            }
+        },
+        "components": {
+            "minecraft:unit_cube": {},
+            "minecraft:destroy_time": 0.5,
+            "minecraft:explosion_resistance": 0.5,
+            "minecraft:map_color": "#000000",
+            "minecraft:block_light_absorption": 0,
+            "minecraft:block_light_emission": 0,
+            "minecraft:display_name": "s_test",
+            "minecraft:on_player_placing": {
+                "event": "seichi:placed_event"
+            },
+            "minecraft:on_player_destroyed": {
+                "event": "seichi:destroyed_event"
+            }
+        },
+        "events": {
+            "seichi:placed_event": {
+                "set_block_property": {
+                    "seichi:player_destroyed": 0
+                }
+            },
+            "seichi:destroyed_event": {
+                "set_block_property": {
+                    "seichi:player_destroyed": 1
+                }
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('seichi:player_destroyed') == 0",
+                "components": {
+                    "minecraft:loot": "loot_tables/blocks/s_test.json"
+                }
+            },
+            {
+                "condition": "query.block_property('seichi:player_destroyed') == 1",
+                "components": {
+                    "minecraft:loot": "loot_tables/blocks/s_test2.json"
+                }
+            }
+        ]
+    }
+}

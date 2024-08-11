@@ -1,0 +1,564 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "description": {
+      "category": "equipment",
+      "identifier": "seichi:s_emerald_paxel_6"
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "s_emerald_paxel_6"
+      },
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.pickaxe"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:allow_off_hand": true,
+      "minecraft:mining_speed": 1,
+      "minecraft:damage": 1,
+      "minecraft:enchantable": {
+        "value": 100,
+        "slot": "all"
+      },
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:render_offsets": "tools",
+      "minecraft:display_name": {
+        
+      },
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:shulker_box",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_dirt",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_sand",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_redsand",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_snow",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_clay",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_gravel",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_stone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_sandstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_netherrack",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_obsidian",
+            "speed": 30
+          },
+          {
+            "block": "seichi:s_end_stone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_clay",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_coarse_dirt",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_dirt",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_dirt_with_roots",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_farmland",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_grass",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_grass_path",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_gravel",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_moss_block",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_mycelium",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_podzol",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_redsand",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_sand",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_snow",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_tnt",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_amethyst_block",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_andesite",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_blue_ice",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_brick_block",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_calcite",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_chiseled_red_sandstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_chiseled_sandstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_chiseled_stone_bricks",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_cobblestone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_cracked_stone_bricks",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_crying_obsidian",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_cut_red_sandstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_cut_sandstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_diorite",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_dripstone_block",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_end_portal_frame",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_end_stone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_glass",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_granite",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_hardened_clay",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_hardened_clay_stained_blue",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_hardened_clay_stained_gray",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_hardened_clay_stained_light_gray",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_hardened_clay_stained_orange",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_hardened_clay_stained_red",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_hardened_clay_stained_white",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_hardened_clay_stained_yellow",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_ice",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_iron_bars",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_magma",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_mossy_cobblestone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_mossy_stone_bricks",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_netherrack",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_obsidian",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_packed_ice",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_redsandstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_sandstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_smooth_basalt",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_smooth_red_sandstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_smooth_sandstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_smooth_stone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_stone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_stonebrick",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_tuff",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_white_stained_glass",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_yellow_stained_glass",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_iron",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_gold",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_diamond",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_lapis",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_redstone",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_coal",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_copper",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_emerald",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_emerald_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_platinum",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_hp_diamond",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_orichalcum",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_tutinium",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_bauxite",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_uranium",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_ruby",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_iron_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_gold_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_diamond_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_lapis_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_redstone_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_coal_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_copper_deepslate",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_platinum_deepslate",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_hp_diamond_deepslate",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_orichalcum_deepslate",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_tutinium_deepslate",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_bauxite_deepslate",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_uranium_deepslate",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_ruby_deepslate",
+            "speed": 1
+          },
+          {
+            "block": "seichi:n_acacia_leaves",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_acacia_log",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_acacia_planks",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_bee_nest",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_birch_leaves",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_birch_log",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_birch_planks",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_bookshelf",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_brown_mushroom_block",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_dark_oak_leaves",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_dark_oak_log",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_dark_oak_planks",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_hay_block",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_jungle_leaves",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_jungle_log",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_jungle_planks",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_melon_block",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_mushroom_block",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_oak_leaves",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_oak_log",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_oak_planks",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_pumpkin",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_red_mushroom_block",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_spruce_leaves",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_spruce_log",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_spruce_planks",
+            "speed": 30
+          },
+          {
+            "block": "seichi:n_white_wool",
+            "speed": 30
+          }
+        ]
+      }
+    }
+  }
+}

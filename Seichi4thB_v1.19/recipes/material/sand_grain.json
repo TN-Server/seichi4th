@@ -1,0 +1,26 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:sand_grain"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "AAA",
+      "AAA",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:sand_material",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:sand_grain",
+      "count": 1
+    }
+  }
+}

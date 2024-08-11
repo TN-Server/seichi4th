@@ -1,0 +1,1 @@
+scoreboard players add @p levelup_count -1000

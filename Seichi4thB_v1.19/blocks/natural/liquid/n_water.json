@@ -1,0 +1,23 @@
+{
+  "format_version": "1.16.200",
+  "minecraft:block": {
+    "description": {
+      "identifier": "seichi:n_water",
+      "is_experimental": false,
+      "register_to_creative_menu": true
+    },
+    "components": {
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "s_water",
+          "render_method": "blend"
+        }
+      },
+      "minecraft:destroy_time": 1.0,
+      "minecraft:explosion_resistance": 0.0,
+      "minecraft:map_color": "#000000",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": 0
+    }
+  }
+}

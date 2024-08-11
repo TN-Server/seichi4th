@@ -1,0 +1,46 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "seichi:haste_cookie_1",
+      "category": "Equipment"
+    },
+    "components": {
+      "minecraft:render_offsets": "miscellaneous",
+      "minecraft:allow_off_hand": true,
+      "minecraft:icon": {
+        "texture": "haste_cookie"
+      },
+      "minecraft:max_stack_size": 64,
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.cookedFood"
+      },
+      "minecraft:display_name": {},
+      "minecraft:use_duration": 1.6,
+      "minecraft:use_animation": "eat",
+      "minecraft:food": {
+        "nutrition": 10,
+        "can_always_eat": true,
+        "saturation_modifier": "supernatural",
+        "on_consume": {
+          "event": "seichi:haste_1"
+        }
+      }
+    },
+    "events": {
+      "seichi:haste_1": {
+        "sequence": [
+          {
+            "add_mob_effect": {
+              "effect": "haste",
+              "target": "holder",
+              "duration": 300,
+              "amplifier": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+}

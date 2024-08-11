@@ -1,0 +1,26 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:s_alminium_block"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "AAA",
+      "AAA",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:s_alminium",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:s_alminium_block",
+      "count": 1
+    }
+  }
+}

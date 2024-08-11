@@ -1,0 +1,20 @@
+{
+    "format_version": "1.14",
+    "minecraft:recipe_material_reduction": {
+      "description": {
+        "identifier": "seichi:disenchant_lapis"
+      },
+      "tags": "material_reducer",
+      "input": "seichi:s_enchanted_lapis",
+      "output": [
+        {
+          "count": 1,
+          "item": "seichi:s_lapis"
+        },
+        {
+          "count": 1,
+          "item": "seichi:s_enchanted_stone"
+        }
+      ]
+    }
+  }

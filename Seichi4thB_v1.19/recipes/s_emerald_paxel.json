@@ -1,0 +1,38 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:s_emerald_paxel"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "ABC",
+      " D ",
+      " D "
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:s_emerald_axe",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:s_emerald_pickaxe",
+        "data": 0
+      },
+      "C": {
+        "item": "seichi:s_emerald_shovel",
+        "data": 0
+      },
+      "D": {
+        "item": "seichi:s_stick",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:s_emerald_paxel",
+      "count": 1
+    }
+  }
+}

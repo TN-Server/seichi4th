@@ -1,0 +1,18 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shapeless": {
+    "description": {
+    "identifier": "seichi:p_stick_3"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "seichi:p_diamond_pickaxe"
+      }
+    ],
+    "result": {
+      "item": "seichi:p_stick"
+    }
+  }
+}

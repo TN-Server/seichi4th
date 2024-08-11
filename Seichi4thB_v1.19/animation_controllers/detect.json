@@ -1,0 +1,78 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.death": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "dead": "!query.is_alive"
+            }
+          ],
+          "on_entry": [
+            "/tag @s remove dead"
+          ]
+        },
+        "dead": {
+          "transitions": [
+            {
+              "default": "query.is_alive"
+            }
+          ],
+          "on_entry": [
+            "/tag @s add dead"
+          ]
+        }
+      }
+    },
+    "controller.animation.sneaking": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "sneaking": "q.is_sneaking"
+            }
+          ]
+        },
+        "sneaking": {
+          "on_entry": [
+            "/function detection/sneaking_entry",
+            "@s tn:event_sneak"
+          ],
+          "on_exit": [
+            "/function detection/sneaking_exit"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_sneaking"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.sprinting": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "sprinting": "q.is_sprinting"
+            }
+          ]
+        },
+        "sprinting": {
+          "on_entry": [
+            "/function detection/sprinting_entry"
+          ],
+          "on_exit": [
+            "/function detection/sprinting_exit"
+          ],
+          "transitions": [
+            {
+              "default": "!q.is_sprinting"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+scoreboard players add @p mine 1000

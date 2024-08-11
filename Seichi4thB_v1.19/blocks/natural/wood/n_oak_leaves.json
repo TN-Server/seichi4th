@@ -1,0 +1,24 @@
+{
+  "format_version": "1.16.200",
+  "minecraft:block": {
+    "description": {
+      "identifier": "seichi:n_oak_leaves",
+      "is_experimental": false,
+      "register_to_creative_menu": true
+    },
+    "components": {
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "s_oak_leaves",
+          "render_method": "blend"
+        }
+      },
+      "minecraft:unit_cube": {},
+      "minecraft:destroy_time": 2.0,
+      "minecraft:explosion_resistance": 0.0,
+      "minecraft:map_color": "#000000",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": 0
+    }
+  }
+}

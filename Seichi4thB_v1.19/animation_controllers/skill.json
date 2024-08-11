@@ -1,0 +1,274 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.skill": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "sneaking": "q.get_equipped_item_name(1) == 'skill_item' && q.is_sneaking"
+            },
+            {
+              "emerald_skill": "( q.get_equipped_item_name == 's_emerald_paxel_12' || q.get_equipped_item_name == 's_emerald_paxel_13' || q.get_equipped_item_name == 's_emerald_paxel_14' || q.get_equipped_item_name == 's_emerald_paxel_15' ) && q.is_sneaking"
+            }
+          ]
+        },
+        "sneaking": {
+          "on_entry": [
+            "/function skill/haste_skill"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name(1) != 'skill_item' || !q.is_sneaking"
+            }
+          ]
+        },
+        "emerald_skill": {
+          "on_entry": [
+            "/execute @s[scores={emerald_skill=1..}] ~~~ function skill/emerald_skill",
+            "/execute @s[scores={e_cool_time=1..}] ~~~ tellraw @s {\"rawtext\":[{\"text\":\"§aCooltime: \"},{\"score\":{\"name\":\"@s\",\"objective\":\"cool_time\"}},{\"text\":\" tick\"} ]}"
+          ],
+          "transitions": [
+            {
+              "default": "( q.get_equipped_item_name != 's_emerald_paxel_12' || q.get_equipped_item_name != 's_emerald_paxel_13' || q.get_equipped_item_name != 's_emerald_paxel_14' || q.get_equipped_item_name != 's_emerald_paxel_15' ) || !q.is_sneaking"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.skill2": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "skill": "( q.get_equipped_item_name == 'p_wooden_shovel' || q.get_equipped_item_name == 'p_stone_shovel' || q.get_equipped_item_name == 'p_iron_shovel' || q.get_equipped_item_name == 'p_golden_shovel' || q.get_equipped_item_name == 'p_diamond_shovel' || q.get_equipped_item_name == 'p_netherite_shovel' || q.get_equipped_item_name == 'p_wooden_pickaxe' || q.get_equipped_item_name == 'p_stone_pickaxe' || q.get_equipped_item_name == 'p_iron_pickaxe' || q.get_equipped_item_name == 'p_golden_pickaxe' || q.get_equipped_item_name == 'p_diamond_pickaxe' || q.get_equipped_item_name == 'p_netherite_pickaxe' ) && q.is_sneaking"
+            }
+          ]
+        },
+        "skill": {
+          "on_entry": [
+            "/execute @s[tag=!cool_time] ~~~ function skill/break_skill",
+            "/execute @s[tag=cool_time] ~~~ tellraw @s {\"rawtext\":[{\"text\":\"§cCooltime: \"},{\"score\":{\"name\":\"@s\",\"objective\":\"cool_time\"}},{\"text\":\" tick\"} ]}"
+          ],
+          "transitions": [
+            {
+              "default": "( q.get_equipped_item_name != 'p_wooden_shovel' && q.get_equipped_item_name != 'p_stone_shovel' && q.get_equipped_item_name != 'p_iron_shovel' && q.get_equipped_item_name != 'p_golden_shovel' && q.get_equipped_item_name != 'p_diamond_shovel' && q.get_equipped_item_name != 'p_netherite_shovel' && q.get_equipped_item_name != 'p_wooden_pickaxe' && q.get_equipped_item_name != 'p_stone_pickaxe' && q.get_equipped_item_name != 'p_iron_pickaxe' && q.get_equipped_item_name != 'p_golden_pickaxe' && q.get_equipped_item_name != 'p_diamond_pickaxe' && q.get_equipped_item_name != 'p_netherite_pickaxe' ) || !q.is_sneaking"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.skill3": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "wooden_shovel": "q.get_equipped_item_name == 'p_wooden_shovel' && v.attack_time"
+            },
+            {
+              "stone_shovel": "q.get_equipped_item_name == 'p_stone_shovel' && v.attack_time"
+            },
+            {
+              "iron_shovel": "q.get_equipped_item_name == 'p_iron_shovel' && v.attack_time"
+            },
+            {
+              "golden_shovel": "q.get_equipped_item_name == 'p_golden_shovel' && v.attack_time"
+            },
+            {
+              "diamond_shovel": "q.get_equipped_item_name == 'p_diamond_shovel' && v.attack_time"
+            },
+            {
+              "netherite_shovel": "q.get_equipped_item_name == 'p_netherite_shovel' && v.attack_time"
+            },
+            {
+              "wooden_pickaxe": "q.get_equipped_item_name == 'p_wooden_pickaxe' && v.attack_time"
+            },
+            {
+              "stone_pickaxe": "q.get_equipped_item_name == 'p_stone_pickaxe' && v.attack_time"
+            },
+            {
+              "iron_pickaxe": "q.get_equipped_item_name == 'p_iron_pickaxe' && v.attack_time"
+            },
+            {
+              "golden_pickaxe": "q.get_equipped_item_name == 'p_golden_pickaxe' && v.attack_time"
+            },
+            {
+              "diamond_pickaxe": "q.get_equipped_item_name == 'p_diamond_pickaxe' && v.attack_time"
+            },
+            {
+              "netherite_pickaxe": "q.get_equipped_item_name == 'p_netherite_pickaxe' && v.attack_time"
+            }
+          ]
+        },
+        "wooden_shovel": {
+          "on_entry": [
+            "/tag @s add skill_dirt",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_dirt"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_wooden_shovel' || !v.attack_time"
+            }
+          ]
+        },
+        "stone_shovel": {
+          "on_entry": [
+            "/tag @s add skill_sand",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_sand"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_stone_shovel' || !v.attack_time"
+            }
+          ]
+        },
+        "iron_shovel": {
+          "on_entry": [
+            "/tag @s add skill_redsand",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_redsand"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_iron_shovel' || !v.attack_time"
+            }
+          ]
+        },
+        "golden_shovel": {
+          "on_entry": [
+            "/tag @s add skill_snow",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_snow"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_golden_shovel' || !v.attack_time"
+            }
+          ]
+        },
+        "diamond_shovel": {
+          "on_entry": [
+            "/tag @s add skill_clay",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_clay"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_diamond_shovel' || !v.attack_time"
+            }
+          ]
+        },
+        "netherite_shovel": {
+          "on_entry": [
+            "/tag @s add skill_gravel",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_gravel"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_netherite_shovel' || !v.attack_time"
+            }
+          ]
+        },
+        "wooden_pickaxe": {
+          "on_entry": [
+            "/tag @s add skill_stone",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_stone"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_wooden_pickaxe' || !v.attack_time"
+            }
+          ]
+        },
+        "stone_pickaxe": {
+          "on_entry": [
+            "/tag @s add skill_sandstone",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_sandstone"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_stone_pickaxe' || !v.attack_time"
+            }
+          ]
+        },
+        "iron_pickaxe": {
+          "on_entry": [
+            "/tag @s add skill_netherrack",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_netherrack"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_iron_pickaxe' || !v.attack_time"
+            }
+          ]
+        },
+        "golden_pickaxe": {
+          "on_entry": [
+            "/tag @s add skill_deepslate",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_deepslate"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_golden_pickaxe' || !v.attack_time"
+            }
+          ]
+        },
+        "diamond_pickaxe": {
+          "on_entry": [
+            "/tag @s add skill_obsidian",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_obsidian"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_diamond_pickaxe' || !v.attack_time"
+            }
+          ]
+        },
+        "netherite_pickaxe": {
+          "on_entry": [
+            "/tag @s add skill_endstone",
+            "/execute @s[scores={break_skill=0..}] ~~~ function skill/attack"
+          ],
+          "on_exit": [
+            "/tag @s remove skill_endstone"
+          ],
+          "transitions": [
+            {
+              "default": "q.get_equipped_item_name != 'p_netherite_pickaxe' || !v.attack_time"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

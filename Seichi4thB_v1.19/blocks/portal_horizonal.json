@@ -1,0 +1,25 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:block": {
+    "description": {
+      "identifier": "seichi:portal_horizonal",
+      "is_experimental": false
+    },
+    "components": {
+      "minecraft:destroy_time": 1.0,
+      "minecraft:explosion_resistance": 0.0,
+      "minecraft:map_color": "#000000",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": 0,
+      "minecraft:geometry": "geometry.portal",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "portal",
+          "render_method": "blend"
+        }
+      },
+      "minecraft:entity_collision": false,
+      "minecraft:pick_collision": false
+    }
+  }
+}

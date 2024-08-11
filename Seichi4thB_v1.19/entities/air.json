@@ -1,0 +1,32 @@
+//by RetoRuto9900K @tutinoko_kusaa
+{
+    "format_version": "1.8.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "seichi:air",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false,
+            "scripts": {
+                "animate": [
+                    "air"
+                ]
+            },
+            "animations": {
+                "air": "controller.animation.air"
+            }
+        },
+        "components": {
+            "minecraft:damage_sensor": {
+                "on_damage": {
+                    "filters": {}
+                },
+                "deals_damage": false
+            },
+            "minecraft:physics": {
+                "has_gravity": false,
+                "has_collision": false
+            }
+        }
+    }
+}

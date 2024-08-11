@@ -1,0 +1,50 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:p_netherite_pickaxe"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "ABC",
+      "DEF",
+      " G"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:stone_pebble",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:sandstone_pebble",
+        "data": 0
+      },
+      "C": {
+        "item": "seichi:netherrack_pebble",
+        "data": 0
+      },
+      "D": {
+        "item": "seichi:deepslate_pebble",
+        "data": 0
+      },
+      "E": {
+        "item": "seichi:s_netherite_pickaxe",
+        "data": 0
+      },
+      "F": {
+        "item": "seichi:obsidian_pebble",
+        "data": 0
+      },
+      "G": {
+        "item": "seichi:end_stone_pebble",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:p_netherite_pickaxe",
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:item": {
+        "description": {
+            "identifier": "seichi:s_enchanted_hp_diamond",
+            "category": "Equipment"
+        },
+        "components": {
+            "minecraft:render_offsets": "miscellaneous",
+            "minecraft:allow_off_hand": true,
+            "minecraft:icon": {
+                "texture": "s_hp_diamond"
+            },
+            "minecraft:max_stack_size": 64,
+            "minecraft:foil": true,
+            "minecraft:can_destroy_in_creative": false,
+            "minecraft:display_name": {}
+        }
+    }
+}

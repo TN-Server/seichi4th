@@ -1,0 +1,19 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shapeless": {
+    "description": {
+    "identifier": "seichi:gravel_material"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "seichi:gravel_grain"
+      }
+    ],
+    "result": {
+      "item": "seichi:gravel_material",
+      "count": 9
+    }
+  }
+}

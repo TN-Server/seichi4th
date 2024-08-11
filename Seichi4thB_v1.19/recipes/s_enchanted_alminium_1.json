@@ -1,0 +1,42 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:s_enchanted_alminium_1"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "ABC",
+      "DED",
+      "CBA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:p_netherite_pickaxe",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:s_alminium",
+        "data": 0
+      },
+      "C": {
+        "item": "seichi:p_netherite_shovel",
+        "data": 0
+      },
+      "D": {
+        "item": "seichi:s_alminium_block",
+        "data": 0
+      },
+      "E": {
+        "item": "seichi:s_enchanted_deepslate",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:s_new_enchanted_alminium",
+      "count": 1
+    }
+  }
+}

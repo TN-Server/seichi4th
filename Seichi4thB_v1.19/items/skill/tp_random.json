@@ -1,0 +1,31 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:item": {
+      "description": {
+        "identifier": "seichi:tp_random",
+        "category": "Equipment"
+      },
+      "components": {
+        "minecraft:render_offsets": "miscellaneous",
+        "minecraft:icon": {
+          "texture": "tp_random"
+        },
+        "minecraft:max_stack_size": 1,
+        "minecraft:can_destroy_in_creative": false,
+        "minecraft:foil": false,
+        "minecraft:on_use": {
+          "on_use": {
+            "event": "seichi:tp_random"
+          }
+        }
+      },
+      "events": {
+        "seichi:tp_random": {
+          "run_command": {
+            "command": "tp @r[rm=3,tag=!op]",
+            "target": "self"
+          }
+        }
+      }
+    }
+  }

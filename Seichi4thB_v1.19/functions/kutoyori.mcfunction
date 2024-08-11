@@ -1,0 +1,1 @@
+summon minecraft:creeper ~~~ minecraft:start_exploding 口より手を動かせ

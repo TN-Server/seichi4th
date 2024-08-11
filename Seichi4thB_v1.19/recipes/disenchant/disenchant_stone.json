@@ -1,0 +1,20 @@
+{
+    "format_version": "1.14",
+    "minecraft:recipe_material_reduction": {
+      "description": {
+        "identifier": "seichi:disenchant_stone"
+      },
+      "tags": "material_reducer",
+      "input": "seichi:s_enchanted_stone",
+      "output": [
+        {
+          "count": 8,
+          "item": "seichi:stone_fragment"
+        },
+        {
+          "count": 1,
+          "item": "seichi:s_emerald_shard"
+        }
+      ]
+    }
+  }

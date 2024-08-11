@@ -1,0 +1,19 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shapeless": {
+    "description": {
+    "identifier": "seichi:clay_material"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "seichi:clay_grain"
+      }
+    ],
+    "result": {
+      "item": "seichi:clay_material",
+      "count": 9
+    }
+  }
+}

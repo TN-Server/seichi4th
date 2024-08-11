@@ -1,0 +1,26 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:gravel_grain"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "AAA",
+      "AAA",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:gravel_material",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:gravel_grain",
+      "count": 1
+    }
+  }
+}

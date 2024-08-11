@@ -1,0 +1,37 @@
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_clay
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_coarse_dirt
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_dirt
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_grass
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_gravel
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_podzol
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_redsand
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_sand
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_snow
+
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_andesite
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_blue_ice
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_calcite
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_cobblestone
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_deepslate
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_diorite
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_dripstone_block
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_end_stone
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_granite
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_hardened_clay
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_hardened_clay_stained_gray
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_hardened_clay_stained_light_gray
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_hardened_clay_stained_orange
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_hardened_clay_stained_red
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_hardened_clay_stained_white
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_hardened_clay_stained_yellow
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_ice
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_packed_ice
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_redsandstone
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_sandstone
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_smooth_basalt
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_stone
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_stonebrick
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_tuff
+
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_water
+fill ~1~2~1~-1~~-1 air 0 replace seichi:n_lava

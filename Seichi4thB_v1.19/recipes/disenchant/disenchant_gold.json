@@ -1,0 +1,20 @@
+{
+    "format_version": "1.14",
+    "minecraft:recipe_material_reduction": {
+      "description": {
+        "identifier": "seichi:disenchant_gold"
+      },
+      "tags": "material_reducer",
+      "input": "seichi:s_enchanted_gold",
+      "output": [
+        {
+          "count": 1,
+          "item": "seichi:s_gold"
+        },
+        {
+          "count": 1,
+          "item": "seichi:s_enchanted_stone"
+        }
+      ]
+    }
+  }

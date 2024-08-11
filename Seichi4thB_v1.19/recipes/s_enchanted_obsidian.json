@@ -1,0 +1,30 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:s_enchanted_obsidian"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "AAA",
+      "ABA",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:obsidian_pebble",
+        "data": 0
+      },
+      "B": {
+        "item": "seichi:s_emerald_block",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:s_enchanted_obsidian",
+      "count": 1
+    }
+  }
+}

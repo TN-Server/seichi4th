@@ -1,0 +1,144 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "description": {
+      "category": "equipment",
+      "identifier": "seichi:s_emerald_axe"
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "s_emerald_axe"
+      },
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.axe"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:allow_off_hand": true,
+      "minecraft:mining_speed": 1,
+      "minecraft:damage": 1,
+      "minecraft:enchantable": {
+        "value": 15,
+        "slot": "axe"
+      },
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:render_offsets": "tools",
+      "minecraft:display_name": {
+        
+      },
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "seichi:n_acacia_leaves",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_acacia_log",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_acacia_planks",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_bee_nest",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_birch_leaves",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_birch_log",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_birch_planks",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_bookshelf",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_brown_mushroom_block",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_dark_oak_leaves",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_dark_oak_log",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_dark_oak_planks",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_hay_block",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_jungle_leaves",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_jungle_log",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_jungle_planks",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_melon_block",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_mushroom_block",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_oak_leaves",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_oak_log",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_oak_planks",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_pumpkin",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_red_mushroom_block",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_spruce_leaves",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_spruce_log",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_spruce_planks",
+            "speed": 16
+          },
+          {
+            "block": "seichi:n_white_wool",
+            "speed": 16
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shapeless": {
+    "description": {
+    "identifier": "seichi:s_steel_3"
+    },
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "seichi:s_enchanted_coal"
+      },
+      {
+        "item": "seichi:s_enchanted_iron"
+      },
+      {
+        "item": "seichi:s_enchanted_iron"
+      },
+      {
+        "item": "seichi:s_emerald_shard"
+      }
+    ],
+    "result": {
+      "item": "seichi:s_steel"
+    }
+  }
+}

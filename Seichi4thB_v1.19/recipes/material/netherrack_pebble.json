@@ -1,0 +1,26 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "seichi:netherrack_pebble"
+    },
+
+    "tags": ["crafting_table"],
+    "group": "seichi",
+    "pattern": [
+      "AAA",
+      "AAA",
+      "AAA"
+    ],
+    "key": {
+      "A": {
+        "item": "seichi:netherrack_fragment",
+        "data": 0
+      }
+    },
+    "result": {
+      "item": "seichi:netherrack_pebble",
+      "count": 1
+    }
+  }
+}
