@@ -4,3 +4,5 @@
 
 ![last_1](./screenshots/last_1.jpg)
 ![last_2](./screenshots/last_2.jpg)
+
+[スクショ一覧(重いので注意)](./screen-shots.md)
